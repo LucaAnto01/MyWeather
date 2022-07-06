@@ -16,7 +16,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    //Test push on github repository
+    //Test commit & push on github repository
 }
 
 
