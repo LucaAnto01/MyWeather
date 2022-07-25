@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		811A491A288F27DF008B35A5 /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 811A4919288F27DF008B35A5 /* HomeViewController.m */; };
 		8140713E28761D500017A4E9 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 8140713D28761D500017A4E9 /* AppDelegate.m */; };
 		8140714128761D500017A4E9 /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 8140714028761D500017A4E9 /* SceneDelegate.m */; };
 		8140714428761D500017A4E9 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8140714328761D500017A4E9 /* ViewController.m */; };
@@ -37,6 +38,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		811A4918288F27DF008B35A5 /* HomeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HomeViewController.h; sourceTree = "<group>"; };
+		811A4919288F27DF008B35A5 /* HomeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HomeViewController.m; sourceTree = "<group>"; };
 		8140713928761D500017A4E9 /* MyWeather.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyWeather.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8140713C28761D500017A4E9 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		8140713D28761D500017A4E9 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -47,7 +50,7 @@
 		8140714628761D500017A4E9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		8140714828761D520017A4E9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8140714B28761D520017A4E9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		8140714D28761D520017A4E9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8140714D28761D520017A4E9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = MyWeather/Application/Info.plist; sourceTree = SOURCE_ROOT; };
 		8140714E28761D520017A4E9 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		8140715428761D530017A4E9 /* MyWeatherTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MyWeatherTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8140715828761D530017A4E9 /* MyWeatherTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyWeatherTests.m; sourceTree = "<group>"; };
@@ -81,6 +84,59 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		811A4913288F2615008B35A5 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				8140714528761D500017A4E9 /* Main.storyboard */,
+				8140714A28761D520017A4E9 /* LaunchScreen.storyboard */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		811A4914288F2661008B35A5 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				811A4917288F274B008B35A5 /* Home */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		811A4915288F2671008B35A5 /* Application */ = {
+			isa = PBXGroup;
+			children = (
+				8140713C28761D500017A4E9 /* AppDelegate.h */,
+				8140713D28761D500017A4E9 /* AppDelegate.m */,
+				8140713F28761D500017A4E9 /* SceneDelegate.h */,
+				8140714028761D500017A4E9 /* SceneDelegate.m */,
+				8140714E28761D520017A4E9 /* main.m */,
+				8140714D28761D520017A4E9 /* Info.plist */,
+			);
+			path = Application;
+			sourceTree = "<group>";
+		};
+		811A4916288F2687008B35A5 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		811A4917288F274B008B35A5 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				811A4918288F27DF008B35A5 /* HomeViewController.h */,
+				811A4919288F27DF008B35A5 /* HomeViewController.m */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		811A491B288F2915008B35A5 /* Library */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Library;
+			sourceTree = "<group>";
+		};
 		8140713028761D500017A4E9 = {
 			isa = PBXGroup;
 			children = (
@@ -104,17 +160,14 @@
 		8140713B28761D500017A4E9 /* MyWeather */ = {
 			isa = PBXGroup;
 			children = (
-				8140713C28761D500017A4E9 /* AppDelegate.h */,
-				8140713D28761D500017A4E9 /* AppDelegate.m */,
-				8140713F28761D500017A4E9 /* SceneDelegate.h */,
-				8140714028761D500017A4E9 /* SceneDelegate.m */,
+				811A4915288F2671008B35A5 /* Application */,
+				811A4914288F2661008B35A5 /* Controllers */,
+				811A491B288F2915008B35A5 /* Library */,
+				811A4916288F2687008B35A5 /* Models */,
+				811A4913288F2615008B35A5 /* Views */,
 				8140714228761D500017A4E9 /* ViewController.h */,
 				8140714328761D500017A4E9 /* ViewController.m */,
-				8140714528761D500017A4E9 /* Main.storyboard */,
 				8140714828761D520017A4E9 /* Assets.xcassets */,
-				8140714A28761D520017A4E9 /* LaunchScreen.storyboard */,
-				8140714D28761D520017A4E9 /* Info.plist */,
-				8140714E28761D520017A4E9 /* main.m */,
 			);
 			path = MyWeather;
 			sourceTree = "<group>";
@@ -269,6 +322,7 @@
 				8140714428761D500017A4E9 /* ViewController.m in Sources */,
 				8140713E28761D500017A4E9 /* AppDelegate.m in Sources */,
 				8140714F28761D520017A4E9 /* main.m in Sources */,
+				811A491A288F27DF008B35A5 /* HomeViewController.m in Sources */,
 				8140714128761D500017A4E9 /* SceneDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -446,7 +500,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = ZSP2UY84WP;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = MyWeather/Info.plist;
+				INFOPLIST_FILE = MyWeather/Application/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -473,7 +527,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = ZSP2UY84WP;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = MyWeather/Info.plist;
+				INFOPLIST_FILE = MyWeather/Application/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
