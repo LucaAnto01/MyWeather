@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		811A491A288F27DF008B35A5 /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 811A4919288F27DF008B35A5 /* HomeViewController.m */; };
+		811A491E288F2D0A008B35A5 /* MDCoordinate.m in Sources */ = {isa = PBXBuildFile; fileRef = 811A491D288F2D0A008B35A5 /* MDCoordinate.m */; };
+		811A4921288F2D47008B35A5 /* MDWeather.m in Sources */ = {isa = PBXBuildFile; fileRef = 811A4920288F2D47008B35A5 /* MDWeather.m */; };
+		811A4924288F2D6B008B35A5 /* MDForecast.m in Sources */ = {isa = PBXBuildFile; fileRef = 811A4923288F2D6B008B35A5 /* MDForecast.m */; };
 		8140713E28761D500017A4E9 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 8140713D28761D500017A4E9 /* AppDelegate.m */; };
 		8140714128761D500017A4E9 /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 8140714028761D500017A4E9 /* SceneDelegate.m */; };
 		8140714428761D500017A4E9 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8140714328761D500017A4E9 /* ViewController.m */; };
@@ -40,6 +43,12 @@
 /* Begin PBXFileReference section */
 		811A4918288F27DF008B35A5 /* HomeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HomeViewController.h; sourceTree = "<group>"; };
 		811A4919288F27DF008B35A5 /* HomeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HomeViewController.m; sourceTree = "<group>"; };
+		811A491C288F2D0A008B35A5 /* MDCoordinate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MDCoordinate.h; sourceTree = "<group>"; };
+		811A491D288F2D0A008B35A5 /* MDCoordinate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MDCoordinate.m; sourceTree = "<group>"; };
+		811A491F288F2D47008B35A5 /* MDWeather.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MDWeather.h; sourceTree = "<group>"; };
+		811A4920288F2D47008B35A5 /* MDWeather.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MDWeather.m; sourceTree = "<group>"; };
+		811A4922288F2D6B008B35A5 /* MDForecast.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MDForecast.h; sourceTree = "<group>"; };
+		811A4923288F2D6B008B35A5 /* MDForecast.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MDForecast.m; sourceTree = "<group>"; };
 		8140713928761D500017A4E9 /* MyWeather.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyWeather.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8140713C28761D500017A4E9 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		8140713D28761D500017A4E9 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -117,6 +126,12 @@
 		811A4916288F2687008B35A5 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				811A491C288F2D0A008B35A5 /* MDCoordinate.h */,
+				811A491D288F2D0A008B35A5 /* MDCoordinate.m */,
+				811A491F288F2D47008B35A5 /* MDWeather.h */,
+				811A4920288F2D47008B35A5 /* MDWeather.m */,
+				811A4922288F2D6B008B35A5 /* MDForecast.h */,
+				811A4923288F2D6B008B35A5 /* MDForecast.m */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -319,11 +334,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				811A4921288F2D47008B35A5 /* MDWeather.m in Sources */,
 				8140714428761D500017A4E9 /* ViewController.m in Sources */,
 				8140713E28761D500017A4E9 /* AppDelegate.m in Sources */,
 				8140714F28761D520017A4E9 /* main.m in Sources */,
 				811A491A288F27DF008B35A5 /* HomeViewController.m in Sources */,
+				811A491E288F2D0A008B35A5 /* MDCoordinate.m in Sources */,
 				8140714128761D500017A4E9 /* SceneDelegate.m in Sources */,
+				811A4924288F2D6B008B35A5 /* MDForecast.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
