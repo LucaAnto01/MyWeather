@@ -11,6 +11,7 @@
 		811A491E288F2D0A008B35A5 /* MDCoordinate.m in Sources */ = {isa = PBXBuildFile; fileRef = 811A491D288F2D0A008B35A5 /* MDCoordinate.m */; };
 		811A4921288F2D47008B35A5 /* MDWeather.m in Sources */ = {isa = PBXBuildFile; fileRef = 811A4920288F2D47008B35A5 /* MDWeather.m */; };
 		811A4924288F2D6B008B35A5 /* MDForecast.m in Sources */ = {isa = PBXBuildFile; fileRef = 811A4923288F2D6B008B35A5 /* MDForecast.m */; };
+		812A020728903DED00BB68C7 /* UIViewGradientColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 812A020628903DED00BB68C7 /* UIViewGradientColor.m */; };
 		8140713E28761D500017A4E9 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 8140713D28761D500017A4E9 /* AppDelegate.m */; };
 		8140714128761D500017A4E9 /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 8140714028761D500017A4E9 /* SceneDelegate.m */; };
 		8140714428761D500017A4E9 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8140714328761D500017A4E9 /* ViewController.m */; };
@@ -49,6 +50,8 @@
 		811A4920288F2D47008B35A5 /* MDWeather.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MDWeather.m; sourceTree = "<group>"; };
 		811A4922288F2D6B008B35A5 /* MDForecast.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MDForecast.h; sourceTree = "<group>"; };
 		811A4923288F2D6B008B35A5 /* MDForecast.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MDForecast.m; sourceTree = "<group>"; };
+		812A020528903DED00BB68C7 /* UIViewGradientColor.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UIViewGradientColor.h; sourceTree = "<group>"; };
+		812A020628903DED00BB68C7 /* UIViewGradientColor.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UIViewGradientColor.m; sourceTree = "<group>"; };
 		8140713928761D500017A4E9 /* MyWeather.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyWeather.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8140713C28761D500017A4E9 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		8140713D28761D500017A4E9 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -148,8 +151,26 @@
 		811A491B288F2915008B35A5 /* Library */ = {
 			isa = PBXGroup;
 			children = (
+				812A020228903D4100BB68C7 /* UICustomElements */,
 			);
 			path = Library;
+			sourceTree = "<group>";
+		};
+		812A020228903D4100BB68C7 /* UICustomElements */ = {
+			isa = PBXGroup;
+			children = (
+				812A020428903DB400BB68C7 /* UIViewGradientColor */,
+			);
+			path = UICustomElements;
+			sourceTree = "<group>";
+		};
+		812A020428903DB400BB68C7 /* UIViewGradientColor */ = {
+			isa = PBXGroup;
+			children = (
+				812A020528903DED00BB68C7 /* UIViewGradientColor.h */,
+				812A020628903DED00BB68C7 /* UIViewGradientColor.m */,
+			);
+			path = UIViewGradientColor;
 			sourceTree = "<group>";
 		};
 		8140713028761D500017A4E9 = {
@@ -336,6 +357,7 @@
 			files = (
 				811A4921288F2D47008B35A5 /* MDWeather.m in Sources */,
 				8140714428761D500017A4E9 /* ViewController.m in Sources */,
+				812A020728903DED00BB68C7 /* UIViewGradientColor.m in Sources */,
 				8140713E28761D500017A4E9 /* AppDelegate.m in Sources */,
 				8140714F28761D520017A4E9 /* main.m in Sources */,
 				811A491A288F27DF008B35A5 /* HomeViewController.m in Sources */,
