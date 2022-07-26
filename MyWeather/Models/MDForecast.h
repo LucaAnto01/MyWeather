@@ -6,11 +6,23 @@
 //
 
 #import <Foundation/Foundation.h>
-
-NS_ASSUME_NONNULL_BEGIN
+#import "MDCoordinate.h"
+#import "MDWeather.h"
 
 @interface MDForecast : NSObject
 
+{
+    @private
+        MDCoordinate *_coordinate;
+        NSMutableArray *_weatherArray;
+}
+
+/**Constructor method*/
+- (instancetype) initWithCoordinate:(MDCoordinate *)coordinate
+                       weatherArray:(NSMutableArray *)weatherArray;
+
+@property (nonatomic, strong) MDCoordinate *coordinate;
+@property (nonatomic, strong) NSMutableArray *weatherArray;
+
 @end
 
-NS_ASSUME_NONNULL_END
