@@ -14,7 +14,6 @@
 		812A020728903DED00BB68C7 /* UIViewGradientColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 812A020628903DED00BB68C7 /* UIViewGradientColor.m */; };
 		8140713E28761D500017A4E9 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 8140713D28761D500017A4E9 /* AppDelegate.m */; };
 		8140714128761D500017A4E9 /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 8140714028761D500017A4E9 /* SceneDelegate.m */; };
-		8140714428761D500017A4E9 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8140714328761D500017A4E9 /* ViewController.m */; };
 		8140714728761D500017A4E9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8140714528761D500017A4E9 /* Main.storyboard */; };
 		8140714928761D520017A4E9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8140714828761D520017A4E9 /* Assets.xcassets */; };
 		8140714C28761D520017A4E9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8140714A28761D520017A4E9 /* LaunchScreen.storyboard */; };
@@ -22,6 +21,7 @@
 		8140715928761D530017A4E9 /* MyWeatherTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 8140715828761D530017A4E9 /* MyWeatherTests.m */; };
 		8140716328761D530017A4E9 /* MyWeatherUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 8140716228761D530017A4E9 /* MyWeatherUITests.m */; };
 		8140716528761D530017A4E9 /* MyWeatherUITestsLaunchTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 8140716428761D530017A4E9 /* MyWeatherUITestsLaunchTests.m */; };
+		81A777572892B70F004065F0 /* ServiceWeather.m in Sources */ = {isa = PBXBuildFile; fileRef = 81A777562892B70F004065F0 /* ServiceWeather.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,8 +57,6 @@
 		8140713D28761D500017A4E9 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		8140713F28761D500017A4E9 /* SceneDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SceneDelegate.h; sourceTree = "<group>"; };
 		8140714028761D500017A4E9 /* SceneDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SceneDelegate.m; sourceTree = "<group>"; };
-		8140714228761D500017A4E9 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		8140714328761D500017A4E9 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		8140714628761D500017A4E9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		8140714828761D520017A4E9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8140714B28761D520017A4E9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -69,6 +67,9 @@
 		8140715E28761D530017A4E9 /* MyWeatherUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MyWeatherUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8140716228761D530017A4E9 /* MyWeatherUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyWeatherUITests.m; sourceTree = "<group>"; };
 		8140716428761D530017A4E9 /* MyWeatherUITestsLaunchTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyWeatherUITestsLaunchTests.m; sourceTree = "<group>"; };
+		81A777552892B70F004065F0 /* ServiceWeather.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ServiceWeather.h; sourceTree = "<group>"; };
+		81A777562892B70F004065F0 /* ServiceWeather.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ServiceWeather.m; sourceTree = "<group>"; };
+		81FD576E2892D58500306E4A /* Location.gpx */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Location.gpx; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -116,6 +117,8 @@
 		811A4915288F2671008B35A5 /* Application */ = {
 			isa = PBXGroup;
 			children = (
+				81FD576D2892D54900306E4A /* Locations */,
+				812F03CC289128F900200D45 /* Services */,
 				8140713C28761D500017A4E9 /* AppDelegate.h */,
 				8140713D28761D500017A4E9 /* AppDelegate.m */,
 				8140713F28761D500017A4E9 /* SceneDelegate.h */,
@@ -173,6 +176,15 @@
 			path = UIViewGradientColor;
 			sourceTree = "<group>";
 		};
+		812F03CC289128F900200D45 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				81A777552892B70F004065F0 /* ServiceWeather.h */,
+				81A777562892B70F004065F0 /* ServiceWeather.m */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
 		8140713028761D500017A4E9 = {
 			isa = PBXGroup;
 			children = (
@@ -201,8 +213,6 @@
 				811A491B288F2915008B35A5 /* Library */,
 				811A4916288F2687008B35A5 /* Models */,
 				811A4913288F2615008B35A5 /* Views */,
-				8140714228761D500017A4E9 /* ViewController.h */,
-				8140714328761D500017A4E9 /* ViewController.m */,
 				8140714828761D520017A4E9 /* Assets.xcassets */,
 			);
 			path = MyWeather;
@@ -223,6 +233,14 @@
 				8140716428761D530017A4E9 /* MyWeatherUITestsLaunchTests.m */,
 			);
 			path = MyWeatherUITests;
+			sourceTree = "<group>";
+		};
+		81FD576D2892D54900306E4A /* Locations */ = {
+			isa = PBXGroup;
+			children = (
+				81FD576E2892D58500306E4A /* Location.gpx */,
+			);
+			path = Locations;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -356,7 +374,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				811A4921288F2D47008B35A5 /* MDWeather.m in Sources */,
-				8140714428761D500017A4E9 /* ViewController.m in Sources */,
 				812A020728903DED00BB68C7 /* UIViewGradientColor.m in Sources */,
 				8140713E28761D500017A4E9 /* AppDelegate.m in Sources */,
 				8140714F28761D520017A4E9 /* main.m in Sources */,
@@ -364,6 +381,7 @@
 				811A491E288F2D0A008B35A5 /* MDCoordinate.m in Sources */,
 				8140714128761D500017A4E9 /* SceneDelegate.m in Sources */,
 				811A4924288F2D6B008B35A5 /* MDForecast.m in Sources */,
+				81A777572892B70F004065F0 /* ServiceWeather.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
