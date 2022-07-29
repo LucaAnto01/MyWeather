@@ -50,7 +50,8 @@
 /**Method for making a new query*/
 -(void) updateData
 {
-    NSString *urlRequest = [NSString stringWithFormat:@"http://api.openweathermap.org/data/2.5/forecast?lat=%f&lon=%f&appid=%@&units=metric&lang=it", _latitude, _longitude, _apiKey]; //5 days
+    NSString *urlRequest = [NSString stringWithFormat:@"http://api.openweathermap.org/data/2.5/forecast?lat=%f&lon=%f&appid=%@&units=metric", _latitude, _longitude, _apiKey]; //5 days
+    //&lang=it for italian response
 
     NSLog(@"%@", urlRequest);
     

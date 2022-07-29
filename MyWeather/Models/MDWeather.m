@@ -218,7 +218,7 @@
         NSDate *dateTmpIn = [dateFormatter dateFromString:dateTmp];
         NSCalendar *calendar = [NSCalendar currentCalendar];
         _hour = [calendar components:(NSCalendarUnitHour | NSCalendarUnitMinute) fromDate:dateTmpIn]; //Set hour
-        NSLog(@"%ld %ld", [_hour hour], [_hour minute]);
+        //NSLog(@"%ld %ld", [_hour hour], [_hour minute]);
     }
     
     return self;

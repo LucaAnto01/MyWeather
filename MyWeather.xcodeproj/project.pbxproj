@@ -12,6 +12,8 @@
 		811A4921288F2D47008B35A5 /* MDWeather.m in Sources */ = {isa = PBXBuildFile; fileRef = 811A4920288F2D47008B35A5 /* MDWeather.m */; };
 		811A4924288F2D6B008B35A5 /* MDForecast.m in Sources */ = {isa = PBXBuildFile; fileRef = 811A4923288F2D6B008B35A5 /* MDForecast.m */; };
 		812A020728903DED00BB68C7 /* UIViewGradientColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 812A020628903DED00BB68C7 /* UIViewGradientColor.m */; };
+		812E1C8B28940A780033156B /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 812E1C8A28940A780033156B /* MapViewController.m */; };
+		812E1C94289411D00033156B /* CurrentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 812E1C93289411D00033156B /* CurrentViewController.m */; };
 		8140713E28761D500017A4E9 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 8140713D28761D500017A4E9 /* AppDelegate.m */; };
 		8140714128761D500017A4E9 /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 8140714028761D500017A4E9 /* SceneDelegate.m */; };
 		8140714728761D500017A4E9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8140714528761D500017A4E9 /* Main.storyboard */; };
@@ -52,6 +54,10 @@
 		811A4923288F2D6B008B35A5 /* MDForecast.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MDForecast.m; sourceTree = "<group>"; };
 		812A020528903DED00BB68C7 /* UIViewGradientColor.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UIViewGradientColor.h; sourceTree = "<group>"; };
 		812A020628903DED00BB68C7 /* UIViewGradientColor.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UIViewGradientColor.m; sourceTree = "<group>"; };
+		812E1C8928940A780033156B /* MapViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MapViewController.h; sourceTree = "<group>"; };
+		812E1C8A28940A780033156B /* MapViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MapViewController.m; sourceTree = "<group>"; };
+		812E1C92289411D00033156B /* CurrentViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CurrentViewController.h; sourceTree = "<group>"; };
+		812E1C93289411D00033156B /* CurrentViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CurrentViewController.m; sourceTree = "<group>"; };
 		8140713928761D500017A4E9 /* MyWeather.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyWeather.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8140713C28761D500017A4E9 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		8140713D28761D500017A4E9 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -109,6 +115,8 @@
 		811A4914288F2661008B35A5 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				812E1C91289411A30033156B /* Current */,
+				812E1C852894091C0033156B /* Map */,
 				811A4917288F274B008B35A5 /* Home */,
 			);
 			path = Controllers;
@@ -174,6 +182,24 @@
 				812A020628903DED00BB68C7 /* UIViewGradientColor.m */,
 			);
 			path = UIViewGradientColor;
+			sourceTree = "<group>";
+		};
+		812E1C852894091C0033156B /* Map */ = {
+			isa = PBXGroup;
+			children = (
+				812E1C8928940A780033156B /* MapViewController.h */,
+				812E1C8A28940A780033156B /* MapViewController.m */,
+			);
+			path = Map;
+			sourceTree = "<group>";
+		};
+		812E1C91289411A30033156B /* Current */ = {
+			isa = PBXGroup;
+			children = (
+				812E1C92289411D00033156B /* CurrentViewController.h */,
+				812E1C93289411D00033156B /* CurrentViewController.m */,
+			);
+			path = Current;
 			sourceTree = "<group>";
 		};
 		812F03CC289128F900200D45 /* Services */ = {
@@ -380,6 +406,8 @@
 				811A491A288F27DF008B35A5 /* HomeViewController.m in Sources */,
 				811A491E288F2D0A008B35A5 /* MDCoordinate.m in Sources */,
 				8140714128761D500017A4E9 /* SceneDelegate.m in Sources */,
+				812E1C94289411D00033156B /* CurrentViewController.m in Sources */,
+				812E1C8B28940A780033156B /* MapViewController.m in Sources */,
 				811A4924288F2D6B008B35A5 /* MDForecast.m in Sources */,
 				81A777572892B70F004065F0 /* ServiceWeather.m in Sources */,
 			);
