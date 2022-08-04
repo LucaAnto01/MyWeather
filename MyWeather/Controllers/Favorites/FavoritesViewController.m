@@ -7,6 +7,7 @@
 
 #import "FavoritesViewController.h"
 #import "../../Library/UICustomElements/UIWeatherTableCell/WeatherTableCell.h"
+#import "../AddFavorites/AddFavoritesViewController.h"
 
 @interface FavoritesViewController ()
 
@@ -39,7 +40,7 @@
     {
         NSString *error = exception.reason;
         
-        UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Current view controller"
+        UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Favorites view controller"
                                    message:error
                                    preferredStyle:UIAlertControllerStyleAlert];
 
@@ -122,8 +123,8 @@
             //Example of syntax --> Zurigo;CH;47.366670;8.55
             NSArray *arrayOfComponents = [resultToSPlit componentsSeparatedByString:@";"];
             
-            NSString *lat = [arrayOfComponents objectAtIndex:2];
-            NSString *lon = [arrayOfComponents objectAtIndex:3];
+            /*NSString *lat = [arrayOfComponents objectAtIndex:2];
+            NSString *lon = [arrayOfComponents objectAtIndex:3];*/
             
             MDForecast *newForecast = [_serviceWeather getForecastWith_latitude:[[arrayOfComponents objectAtIndex:2] doubleValue]
                                                                       longitude:[[arrayOfComponents objectAtIndex:3] doubleValue]];
@@ -139,6 +140,20 @@
         // do stuff
     }
     
+}
+
+/**Segue method*/
+- (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if([segue.identifier isEqualToString:@"navAddFav"])
+    {
+        if([segue.destinationViewController isKindOfClass:[AddFavoritesViewController class]])
+        {
+            AddFavoritesViewController *afvc = (AddFavoritesViewController *) segue.destinationViewController;
+            afvc.serviceWeather = self.serviceWeather; //Set serviceWeather
+            afvc.favs = self.favs;
+        }
+    }
 }
 
 @end

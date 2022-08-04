@@ -101,4 +101,38 @@
     }
 }
 
+-(NSData *) testWeatherForCity:(NSString *)city
+{
+    NSError *error;
+    NSURLResponse *response;
+    
+    @try
+    {
+        NSString *urlRequest = [NSString stringWithFormat:@"http://api.openweathermap.org/data/2.5/forecast?q=%@&appid=%@&units=metric", city, _apiKey]; //5 days
+        //&lang=it for italian response
+
+        NSLog(@"%@", urlRequest);
+        
+        NSData *data = [NSURLConnection sendSynchronousRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:urlRequest]] returningResponse:&response error:&error];
+        NSDictionary *datiJson = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&error]; //Get data format json to work with
+        NSString *esitCode = [datiJson valueForKey:@"cod"];
+        
+        if(data) //There's a response
+        {
+            if([esitCode isEqualToString:@"404"]) //Error
+                return nil;
+            
+            else
+                return data;
+        }
+    }
+    
+    @catch (NSException *exception)
+    {
+        NSLog(@"ERRORE: %@", exception.reason);
+    }
+    
+    return nil;
+}
+
 @end

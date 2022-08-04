@@ -257,9 +257,4 @@
     }
 }
 
--(void)tabBar:(UITabBar *)tabBar didSelectItem:(UITabBarItem *)item
-{
-    NSLog(@"Ciao 2");
-}
-
 @end

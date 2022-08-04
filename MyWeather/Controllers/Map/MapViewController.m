@@ -78,7 +78,6 @@
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewWillAppear: animated];
-
 }
 
 - (void) centerMapToLocation:(CLLocationCoordinate2D)location

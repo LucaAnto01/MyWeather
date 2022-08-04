@@ -6,11 +6,11 @@
 //
 
 #import <UIKit/UIKit.h>
-
-NS_ASSUME_NONNULL_BEGIN
+#import "../../Application/Services/ServiceWeather.h"
 
 @interface AddFavoritesViewController : UIViewController
 
-@end
+@property (nonatomic, strong) ServiceWeather *serviceWeather;
+@property (nonatomic, strong) NSUserDefaults *favs;
 
-NS_ASSUME_NONNULL_END
+@end

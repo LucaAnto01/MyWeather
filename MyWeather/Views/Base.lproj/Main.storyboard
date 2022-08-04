@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="N9y-Dy-OOb">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="N9y-Dy-OOb">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -53,10 +53,10 @@
             </objects>
             <point key="canvasLocation" x="756.52173913043487" y="1200.6696428571429"/>
         </scene>
-        <!--View Controller-->
+        <!--Add Favorites View Controller-->
         <scene sceneID="9e1-bI-o6K">
             <objects>
-                <viewController id="ygw-mw-3Vy" sceneMemberID="viewController">
+                <viewController id="ygw-mw-3Vy" customClass="AddFavoritesViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="0Sw-mg-d83">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -67,13 +67,13 @@
                                 <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="City of interest" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gcn-Ra-N46">
+                            <textField opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="City of interest" borderStyle="roundedRect" textAlignment="natural" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gcn-Ra-N46">
                                 <rect key="frame" x="20" y="511" width="283" height="34"/>
                                 <color key="textColor" systemColor="opaqueSeparatorColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <connections>
-                                    <action selector="tbCity:" destination="7cU-tW-T4r" eventType="editingDidEnd" id="y36-KL-ZCp"/>
+                                    <action selector="startEditing:" destination="ygw-mw-3Vy" eventType="editingDidBegin" id="yD5-bJ-B1O"/>
                                 </connections>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gTM-OA-kWQ">
@@ -83,7 +83,7 @@
                                     <color key="baseBackgroundColor" name="AccentColor"/>
                                 </buttonConfiguration>
                                 <connections>
-                                    <action selector="btAddClick:" destination="7cU-tW-T4r" eventType="touchUpInside" id="lXH-Yc-GPt"/>
+                                    <action selector="btAddClick:" destination="ygw-mw-3Vy" eventType="touchUpInside" id="Uds-kr-ZUE"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -102,9 +102,11 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="J8d-5M-Cai"/>
+                    <connections>
+                        <outlet property="tfNewFavorite" destination="gcn-Ra-N46" id="GN9-di-Ag3"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eJJ-5m-6LF" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-                <exit id="7cU-tW-T4r" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="1666.6666666666667" y="1200.6696428571429"/>
         </scene>

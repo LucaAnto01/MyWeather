@@ -25,6 +25,8 @@
 -(MDForecast *) getForecastWith_latitude:(double)latitude
                                longitude:(double)longitude;
 
+-(NSData *) testWeatherForCity:(NSString *)city;
+
 @property (nonatomic, strong) NSString *apiKey;
 
 @end

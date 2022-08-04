@@ -7,48 +7,64 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "E5A6EFA9-78CD-4344-9A1B-A247C1B7EC80"
+            uuid = "67294E37-0E51-4E8F-9722-852F2C53900E"
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "MyWeather/Controllers/Map/MapViewController.m"
+            filePath = "MyWeather/Controllers/AddFavorites/AddFavoritesViewController.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "88"
-            endingLineNumber = "88"
-            landmarkName = "-centerMapToLocation:zoom:"
+            startingLineNumber = "50"
+            endingLineNumber = "50"
+            landmarkName = "-btAddClick:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "7DD98D85-D3AB-49C1-97AA-E2D22A41948F"
+            uuid = "654BB964-43BC-418B-9542-2BFBEA67A2C1"
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "MyWeather/Controllers/Map/MapViewController.m"
+            filePath = "MyWeather/Controllers/Favorites/FavoritesViewController.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "87"
-            endingLineNumber = "87"
-            landmarkName = "-centerMapToLocation:zoom:"
+            startingLineNumber = "119"
+            endingLineNumber = "119"
+            landmarkName = "-updateFavoritesWeather"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "CCB26057-C6AA-4390-A336-4784AC728DC2"
-            shouldBeEnabled = "No"
+            uuid = "20D4838A-8B26-433B-B594-B8483294032D"
+            shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "MyWeather/Controllers/Map/MapViewController.m"
+            filePath = "MyWeather/Controllers/Favorites/FavoritesViewController.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "56"
-            endingLineNumber = "56"
-            landmarkName = "-viewDidLoad"
+            startingLineNumber = "108"
+            endingLineNumber = "108"
+            landmarkName = "-refreshTableView"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "D9161BFD-54AF-46BE-9C2F-DAF7F6974184"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MyWeather/Controllers/Favorites/FavoritesViewController.m"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "122"
+            endingLineNumber = "122"
+            landmarkName = "-updateFavoritesWeather"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
