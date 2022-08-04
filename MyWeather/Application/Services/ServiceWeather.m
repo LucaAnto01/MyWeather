@@ -16,70 +16,28 @@
     if (self)
     {
         _apiKey = apikey;
-        _latitude = 0.0;
-        _longitude = 0.0;
     }
     
     return self;
 }
 
-/**Complete constructor*/
--(instancetype) initWithApiKey:(NSString *)apikey
-                      latitude:(double)latitude
-                     longitude:(double)longitude
+/**Method using API to obtain forecasts*/
+-(MDForecast *) getForecastWith_latitude:(double)latitude
+                               longitude:(double)longitude
 {
-    self = [super init];
-    if (self)
-    {
-        _apiKey = apikey;
-        _latitude = latitude;
-        _longitude = longitude;
-    }
-    
-    return self;
-}
-
-/**Method for update coordinate*/
--(void) updateLatitude:(double)latitude
-             longitude:(double)longitude
-{
-    _latitude = latitude;
-    _longitude = longitude;
-}
-
-/**Method for making a new query*/
--(void) updateData
-{
-    NSString *urlRequest = [NSString stringWithFormat:@"http://api.openweathermap.org/data/2.5/forecast?lat=%f&lon=%f&appid=%@&units=metric", _latitude, _longitude, _apiKey]; //5 days
-    //&lang=it for italian response
-
-    NSLog(@"%@", urlRequest);
-    
     NSError *error;
     NSURLResponse *response;
     
     @try
     {
-         _data = [NSURLConnection sendSynchronousRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:urlRequest]] returningResponse:&response error:&error];
-    }
-    
-    @catch (NSException *exception)
-    {
-        NSLog(@"ERRORE: %@", exception.reason);
-    }
-    
-}
+        NSString *urlRequest = [NSString stringWithFormat:@"http://api.openweathermap.org/data/2.5/forecast?lat=%f&lon=%f&appid=%@&units=metric", latitude, longitude, _apiKey]; //5 days
+        //&lang=it for italian response
 
-/**Method using API to obtain forecasts*/
--(MDForecast *) getForecast
-{
-    [self updateData];
-    
-    NSError *error;
-    
-    @try
-    {
-        NSDictionary *datiJson = [NSJSONSerialization JSONObjectWithData:_data options:kNilOptions error:&error]; //Get data format json to work with
+        NSLog(@"%@", urlRequest);
+        
+        NSData *data = [NSURLConnection sendSynchronousRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:urlRequest]] returningResponse:&response error:&error];
+        
+        NSDictionary *datiJson = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&error]; //Get data format json to work with
         
         //Create coordinate object
         NSString *cityblock = [datiJson valueForKey:@"city"];
@@ -88,8 +46,8 @@
         
         MDCoordinate *coordinate = [[MDCoordinate alloc] initWithCity:city
                                                               country:country
-                                                             latitude:_latitude
-                                                            longitude:_longitude];
+                                                             latitude:latitude
+                                                            longitude:longitude];
     
         
         //NSString *listblock = [datiJson valueForKey:@"list"];

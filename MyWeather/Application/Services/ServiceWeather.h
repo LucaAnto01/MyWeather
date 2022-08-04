@@ -16,32 +16,15 @@
     /**Attributes*/
     @private
         NSString *_apiKey;
-        double _latitude;
-        double _longitude;
-        NSData *_data;
 }
 
 /**Apikey constructor*/
 -(instancetype) initWithOnlyApiKey:(NSString *)apikey;
 
-/**Complete constructor*/
--(instancetype) initWithApiKey:(NSString *)apikey
-                      latitude:(double)latitude
-                     longitude:(double)longitude;
-
-/**Method for update coordinate*/
--(void) updateLatitude:(double)latitude
-             longitude:(double)longitude;
-
-/**Method for making a new query*/
--(void) updateData;
-
-/**Method using API to obtain forecasts*/
--(MDForecast *) getForecast;
+/**Method using API to obtain forecasts from latitude & longitude*/
+-(MDForecast *) getForecastWith_latitude:(double)latitude
+                               longitude:(double)longitude;
 
 @property (nonatomic, strong) NSString *apiKey;
-@property (nonatomic, readonly) double latitude;
-@property (nonatomic, readonly) double longitude;
-@property (nonatomic, strong) NSData *data;
 
 @end
