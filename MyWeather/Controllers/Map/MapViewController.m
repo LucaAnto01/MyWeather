@@ -11,10 +11,17 @@
 #import "../../Models/MDCoordinate.h"
 #import "../../Models/MDWeather.h"
 #import "../../Models/MDForecast.h"
+#import <MapKit/MapKit.h>
+#import <CoreLocation/CoreLocation.h>
 
-@interface MapViewController ()
+@interface MapViewController () <MKMapViewDelegate/*, CLLocationManagerDelegate*/>
 
-@property (nonatomic, strong) UIViewGradientColor *uiViewGradientColor;
+@property (strong, nonatomic) IBOutlet MKMapView *mkMapView;
+
+//@property (nonatomic,strong) CLLocationManager *locationManager;
+
+- (void) centerMapToLocation:(CLLocationCoordinate2D)location
+                        zoom:(double)zoom;
 
 @end
 
@@ -23,23 +30,66 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    
+    @try
+    {
+        /**Location manager initialisation*/
+        /*_locationManager = [[CLLocationManager alloc]init]; //Alloc
+        _locationManager.delegate = (id)self;
+        _locationManager.desiredAccuracy = kCLLocationAccuracyHundredMeters; //Set precision
+        
+        if([_locationManager respondsToSelector:@selector((requestWhenInUseAuthorization))])
+        {
+            [_locationManager requestWhenInUseAuthorization];
+        }
+        
+        [_locationManager startUpdatingLocation]; //Update position*/
+        
+        
+        self.mkMapView.delegate = self;
+        
+        [self centerMapToLocation:CLLocationCoordinate2DMake(44.801700,10.328012)
+                             zoom:0.1];
+        
+        self.mkMapView.showsUserLocation = YES;
+        
+        [_mkMapView setCenterCoordinate:_mkMapView.userLocation.coordinate animated:YES];
+    }
+    
+    @catch (NSException *exception)
+    {
+        NSString *error = exception.reason;
+        
+        UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Map view controller"
+                                   message:error
+                                   preferredStyle:UIAlertControllerStyleAlert];
+
+        UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
+                                       handler:^(UIAlertAction * action) {}];
+
+        [alert addAction:defaultAction];
+        [self presentViewController:alert animated:YES completion:nil];
+        
+        NSLog(@"ERRORE: %@", exception.reason);
+    }
+
 }
 
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewWillAppear: animated];
-    
-    _uiViewGradientColor = [[UIViewGradientColor alloc] initWithFrame:CGRectZero];
-    
-    [self.view addSubview:_uiViewGradientColor];
-    
-    _uiViewGradientColor.translatesAutoresizingMaskIntoConstraints = false;
-    [_uiViewGradientColor.topAnchor constraintEqualToAnchor:self.view.topAnchor].active = true;
-    [_uiViewGradientColor.leadingAnchor constraintEqualToAnchor:self.view.leadingAnchor].active = true;
-    [_uiViewGradientColor.trailingAnchor constraintEqualToAnchor:self.view.trailingAnchor].active = true;
-    [_uiViewGradientColor.bottomAnchor constraintEqualToAnchor:self.view.bottomAnchor].active = true;
 
 }
+
+- (void) centerMapToLocation:(CLLocationCoordinate2D)location
+                        zoom:(double)zoom
+{
+    MKCoordinateRegion mapRegion;
+    mapRegion.center = location;
+    mapRegion.span.latitudeDelta = zoom;
+    mapRegion.span.longitudeDelta = zoom;
+    [self.mkMapView setRegion:mapRegion animated:YES];
+}
+
 
 @end
