@@ -8,6 +8,7 @@
 #import <UIKit/UIKit.h>
 #import "../../../Models/MDCoordinate.h"
 #import "../../../Models/MDWeather.h"
+#import "../../../Controllers/Favorites/FavoritesViewController.h"
 
 @interface WeatherTableCell : UITableViewCell
 
@@ -18,6 +19,7 @@
 
 @property (nonatomic, strong) MDWeather *weather;
 @property (nonatomic, strong) MDCoordinate *coordinate;
-
+@property (nonatomic, strong) NSUserDefaults *favs;
+@property (nonatomic, strong) FavoritesViewController *fvcRef;
 
 @end
