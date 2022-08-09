@@ -8,6 +8,7 @@
 #import <UIKit/UIKit.h>
 #import "../../../Models/MDCoordinate.h"
 #import "../../../Models/MDWeather.h"
+#import "../../../Models/MDForecast.h"
 #import "../../../Controllers/Favorites/FavoritesViewController.h"
 
 @interface WeatherTableCell : UITableViewCell
@@ -17,6 +18,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *lbMaxTemperature;
 @property (weak, nonatomic) IBOutlet UILabel *lbMinTemperature;
 
+@property (nonatomic, strong) MDForecast *forecast;
 @property (nonatomic, strong) MDWeather *weather;
 @property (nonatomic, strong) MDCoordinate *coordinate;
 @property (nonatomic, strong) NSUserDefaults *favs;
