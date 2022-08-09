@@ -41,7 +41,7 @@
     //self.tbHome.selectedItem = [_tbHome.items objectAtIndex:1];
     
     
-    //NSString *textToLoad = [favs stringForKey:@"ParmaIT"];
+    //NSString *textToLoad = [favs stringForKey:@"Weather_ParmaIT"];
     
     @try
     {
@@ -154,31 +154,56 @@
 /**Method called when ther's a click event on tabbar*/
 -(void)tabBarController:(UITabBarController *)tabBarController didSelectViewController:(UIViewController *)viewController
 {
-    //If select CurrentViewController
-    if([viewController isKindOfClass: [CurrentViewController class]])
+    @try
     {
-        CurrentViewController *cvc = (CurrentViewController *) viewController;
-        cvc.serviceWeather = _serviceWeather;
-        //cvc.locationManager = _locationManager;
-        //cvc.forecast = _forecast;
-        [cvc updateView];
+        //If select CurrentViewController
+        if([viewController isKindOfClass: [CurrentViewController class]])
+        {
+            CurrentViewController *cvc = (CurrentViewController *) viewController;
+            cvc.serviceWeather = _serviceWeather;
+            //cvc.locationManager = _locationManager;
+            //cvc.forecast = _forecast;
+            [cvc updateView];
+        }
+        
+        //If select MapViewController
+        else if([viewController isKindOfClass: [MapViewController class]])
+        {
+            MapViewController *mvc = (MapViewController *) viewController;
+            //hash.userArray = feed.userArray;
+        }
+        
+        //If select FavoritesViewController
+        else if([viewController isKindOfClass: [FavoritesViewController class]])
+        {
+            FavoritesViewController *fvc = (FavoritesViewController *) viewController;
+            fvc.serviceWeather = _serviceWeather;
+            [fvc refreshTableView];
+            //hash.userArray = feed.userArray;
+        }
     }
     
-    //If select MapViewController
-    else if([viewController isKindOfClass: [MapViewController class]])
+    @catch (NSException *exception)
     {
-        MapViewController *mvc = (MapViewController *) viewController;
-        //hash.userArray = feed.userArray;
+        [self showAlertControl_withMessage:exception.reason];
     }
+}
+
+/**Method to display a popup in case of error*/
+- (void) showAlertControl_withMessage:(NSString *)message
+{
     
-    //If select FavoritesViewController
-    else if([viewController isKindOfClass: [FavoritesViewController class]])
-    {
-        FavoritesViewController *fvc = (FavoritesViewController *) viewController;
-        fvc.serviceWeather = _serviceWeather;
-        [fvc refreshTableView];
-        //hash.userArray = feed.userArray;
-    }
+    UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Home view controller"
+                               message:message
+                               preferredStyle:UIAlertControllerStyleAlert];
+
+    UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
+                                   handler:^(UIAlertAction * action) {}];
+
+    [alert addAction:defaultAction];
+    [self presentViewController:alert animated:YES completion:nil];
+    
+    NSLog(@"ERRORE: %@", message);
 }
 
 /**Method called up when switching to current view controller*/

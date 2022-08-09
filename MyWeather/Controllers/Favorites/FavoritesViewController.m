@@ -15,6 +15,8 @@
 @property (nonatomic, strong) NSMutableArray *favForecast;
 @property (nonatomic, strong) NSUserDefaults *favs;
 
+//@property (nonatomic, readonly) long selectedRow;
+
 @end
 
 @implementation FavoritesViewController
@@ -58,34 +60,43 @@
 /**Method to get a table view cell*/
 - (UITableViewCell *) tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *identifier = @"WeatherCell";
-    
-    WeatherTableCell *weatherCell = (WeatherTableCell *)[tableView dequeueReusableCellWithIdentifier:identifier];
-    
-    if(!weatherCell)
+    @try
     {
-        NSArray *nswth = [[NSBundle mainBundle] loadNibNamed:@"WeatherTableCell" owner:self options:nil]; //Method found on stackoverflow --> create an object with certain name
-        weatherCell = [nswth objectAtIndex:0];
+        static NSString *identifier = @"WeatherCell";
         
+        WeatherTableCell *weatherCell = (WeatherTableCell *)[tableView dequeueReusableCellWithIdentifier:identifier];
+        
+        if(!weatherCell)
+        {
+            NSArray *nswth = [[NSBundle mainBundle] loadNibNamed:@"WeatherTableCell" owner:self options:nil]; //Method found on stackoverflow --> create an object with certain name
+            weatherCell = [nswth objectAtIndex:0];
+            
+        }
+        
+        NSInteger i = indexPath.row;
+        MDForecast *forecast = [_favForecast objectAtIndex:i];
+        MDWeather *actualWeather = forecast.weatherArray[0];
+        MDCoordinate *coordinate = forecast.coordinate;
+        
+        weatherCell.weather = actualWeather;
+        weatherCell.coordinate = coordinate;
+        weatherCell.favs = _favs;
+        weatherCell.fvcRef = self;
+        
+        weatherCell.lbCity.text = weatherCell.coordinate.city;
+        weatherCell.lbWeather.text = [forecast getWeatherImage_fromIndex:0];
+        weatherCell.lbMaxTemperature.text = [NSString stringWithFormat:@"%.2f °C", weatherCell.weather.maxTemperature];
+        weatherCell.lbMinTemperature.text = [NSString stringWithFormat:@"%.2f °C", weatherCell.weather.minTemperature];
+        
+        return weatherCell;
     }
     
-    NSInteger i = indexPath.row;
-    MDForecast *forecast = [_favForecast objectAtIndex:i];
-    MDWeather *actualWeather = forecast.weatherArray[0];
-    MDCoordinate *coordinate = forecast.coordinate;
+    @catch (NSException *exception)
+    {
+        [self showAlertControl_withMessage:exception.reason];
+    }
     
-    weatherCell.weather = actualWeather;
-    weatherCell.coordinate = coordinate;
-    
-    weatherCell.lbCity.text = weatherCell.coordinate.city;
-    weatherCell.lbWeather.text = [forecast getWeatherImage_fromIndex:0];
-    weatherCell.lbMaxTemperature.text = [NSString stringWithFormat:@"%.2f °C", weatherCell.weather.maxTemperature];
-    weatherCell.lbMinTemperature.text = [NSString stringWithFormat:@"%.2f °C", weatherCell.weather.minTemperature];
-    
-    //Set lbWeather
-    //if(
-    
-    return weatherCell;
+    return nil;
 }
 
 /**Method for setting the height of Weather cell*/
@@ -97,47 +108,73 @@
 /**Method for setting the number of Weather cell of the table*/
 - (NSInteger) tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return _favForecast.count;
+    NSInteger numberOfFavCities = _favForecast.count;
+    
+    if(numberOfFavCities == 0)
+        [self showAlertControl_withMessage:@"You have not entered any favorite locations yet"];
+    
+    return numberOfFavCities;
+}
+
+/**Method to get the selected row*/
+/*- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+ {
+     _selectedRow = indexPath.row;
+ }*/
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    WeatherTableCell *selectedWeatherCell = (WeatherTableCell *)[tableView cellForRowAtIndexPath:indexPath];
+    NSLog(@"%@", selectedWeatherCell.lbCity.text);
 }
 
 /**Function call for update data of table view*/
 - (void) refreshTableView
 {
-    [self updateFavoritesWeather];
+    @try
+    {
+        [self updateFavoritesWeather];
+        
+        [self.twFavorites.refreshControl endRefreshing];
+        [self.twFavorites reloadData];
+    }
     
-    [self.twFavorites.refreshControl endRefreshing];
-    [self.twFavorites reloadData];
+    @catch (NSException *exception)
+    {
+        [self showAlertControl_withMessage:exception.reason];
+    }
 }
 
 /**Function call for update favorites*/
 - (void) updateFavoritesWeather
 {
-    [_favForecast removeAllObjects]; //Clean array
-    
-    for (NSString* currentKey in _favs.dictionaryRepresentation.allKeys)
+    @try
     {
-        NSArray *arrayResultKey= [currentKey componentsSeparatedByString:@"_"];
-        if([[arrayResultKey objectAtIndex:0] isEqual:@"Weather"]) //If is a key, so an element,  of interest
+        [_favForecast removeAllObjects]; //Clean array
+        
+        for (NSString* currentKey in _favs.dictionaryRepresentation.allKeys)
         {
-            NSString *resultToSPlit = [_favs stringForKey:currentKey];
-            //Example of syntax --> Zurigo;CH;47.366670;8.55
-            NSArray *arrayOfComponents = [resultToSPlit componentsSeparatedByString:@";"];
-            
-            /*NSString *lat = [arrayOfComponents objectAtIndex:2];
-            NSString *lon = [arrayOfComponents objectAtIndex:3];*/
-            
-            MDForecast *newForecast = [_serviceWeather getForecastWith_latitude:[[arrayOfComponents objectAtIndex:2] doubleValue]
-                                                                      longitude:[[arrayOfComponents objectAtIndex:3] doubleValue]];
-            
-            [_favForecast addObject:newForecast];
+            NSArray *arrayResultKey= [currentKey componentsSeparatedByString:@"_"];
+            if([[arrayResultKey objectAtIndex:0] isEqual:@"Weather"]) //If is a key, so an element,  of interest
+            {
+                NSString *resultToSPlit = [_favs stringForKey:currentKey];
+                //Example of syntax --> Zurigo;CH;47.366670;8.55
+                NSArray *arrayOfComponents = [resultToSPlit componentsSeparatedByString:@";"];
+                
+                /*NSString *lat = [arrayOfComponents objectAtIndex:2];
+                NSString *lon = [arrayOfComponents objectAtIndex:3];*/
+                
+                MDForecast *newForecast = [_serviceWeather getForecastWith_latitude:[[arrayOfComponents objectAtIndex:2] doubleValue]
+                                                                          longitude:[[arrayOfComponents objectAtIndex:3] doubleValue]];
+                
+                [_favForecast addObject:newForecast];
+            }
         }
-        
-        /*NSString *resultToSPlit = [_favs stringForKey:currentKey];
-        NSArray *arrayOfComponents = [resultToSPlit componentsSeparatedByString:@";"];
-        
-        if([arrayOfComponents objectAtIndex:1])
-            NSLog(@"%@", [arrayOfComponents objectAtIndex:0]);*/
-        // do stuff
+    }
+    
+    @catch (NSException *exception)
+    {
+        [self showAlertControl_withMessage:exception.reason];
     }
     
 }
@@ -145,15 +182,40 @@
 /**Segue method*/
 - (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    if([segue.identifier isEqualToString:@"navAddFav"])
+    @try
     {
-        if([segue.destinationViewController isKindOfClass:[AddFavoritesViewController class]])
+        if([segue.identifier isEqualToString:@"navAddFav"])
         {
-            AddFavoritesViewController *afvc = (AddFavoritesViewController *) segue.destinationViewController;
-            afvc.serviceWeather = self.serviceWeather; //Set serviceWeather
-            afvc.favs = self.favs;
+            if([segue.destinationViewController isKindOfClass:[AddFavoritesViewController class]])
+            {
+                AddFavoritesViewController *afvc = (AddFavoritesViewController *) segue.destinationViewController;
+                afvc.serviceWeather = self.serviceWeather; //Set serviceWeather
+                afvc.favs = self.favs;
+            }
         }
     }
+    
+    @catch (NSException *exception)
+    {
+        [self showAlertControl_withMessage:exception.reason];
+    }
+}
+
+/**Method to display a popup in case of error*/
+- (void) showAlertControl_withMessage:(NSString *)message
+{
+    
+    UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Favorites view controller"
+                               message:message
+                               preferredStyle:UIAlertControllerStyleAlert];
+
+    UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
+                                   handler:^(UIAlertAction * action) {}];
+
+    [alert addAction:defaultAction];
+    [self presentViewController:alert animated:YES completion:nil];
+    
+    NSLog(@"ERRORE: %@", message);
 }
 
 @end

@@ -82,7 +82,7 @@
     self.tfNewFavorite.textColor = [UIColor blackColor]; //Set color to black
 }
 
-
+/**Method to display a popup in case of error*/
 - (void) showAlertControl_withMessage:(NSString *)message
 {
     
@@ -98,7 +98,5 @@
     
     NSLog(@"ERRORE: %@", message);
 }
-
-
 
 @end
