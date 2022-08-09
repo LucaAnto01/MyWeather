@@ -67,19 +67,7 @@
     
     @catch (NSException *exception)
     {
-        NSString *error = exception.reason;
-        
-        UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Current view controller"
-                                   message:error
-                                   preferredStyle:UIAlertControllerStyleAlert];
-
-        UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
-                                       handler:^(UIAlertAction * action) {}];
-
-        [alert addAction:defaultAction];
-        [self presentViewController:alert animated:YES completion:nil];
-        
-        NSLog(@"ERRORE: %@", exception.reason);
+        [self showAlertControl_withMessage:exception.reason];
     }
     /*[self.view addSubview:_uiViewGradientColor];
     
@@ -143,7 +131,16 @@
 /**Click on button update*/
 - (IBAction)btUpdateClick:(UIButton *)sender
 {
-    [self updateView]; //Update view
+    @try
+    {
+        [self updateView]; //Update view
+    }
+    
+    @catch (NSException *exception)
+    {
+        [self showAlertControl_withMessage:exception.reason];
+    }
+    
 }
 
 
@@ -197,29 +194,26 @@
     
     @catch (NSException *exception)
     {
-        NSString *error = exception.reason;
-        
-        UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Current view controller"
-                                   message:error
-                                   preferredStyle:UIAlertControllerStyleAlert];
-
-        UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
-                                       handler:^(UIAlertAction * action) {}];
-
-        [alert addAction:defaultAction];
-        [self presentViewController:alert animated:YES completion:nil];
-        
-        NSLog(@"ERRORE: %@", exception.reason);
+        [self showAlertControl_withMessage:exception.reason];
     }
     
 }
 
 - (CLLocationManager *)locationManager
 {
-    if(!_locationManager)
-        _locationManager = [[CLLocationManager alloc] init];
-
-    return _locationManager;
+    @try
+    {
+        if(!_locationManager)
+            _locationManager = [[CLLocationManager alloc] init];
+    }
+    @catch (NSException *exception)
+    {
+        [self showAlertControl_withMessage:exception.reason];
+    }
+    @finally
+    {
+        return _locationManager;
+    }
 }
 
 //Call when position is change and update
@@ -241,20 +235,25 @@
     
     @catch (NSException *exception)
     {
-        NSString *error = exception.reason;
-        
-        UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Current view controller"
-                                   message:error
-                                   preferredStyle:UIAlertControllerStyleAlert];
-
-        UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
-                                       handler:^(UIAlertAction * action) {}];
-
-        [alert addAction:defaultAction];
-        [self presentViewController:alert animated:YES completion:nil];
-        
-        NSLog(@"ERRORE: %@", exception.reason);
+        [self showAlertControl_withMessage:exception.reason];
     }
+}
+
+/**Method to display a popup in case of error*/
+- (void) showAlertControl_withMessage:(NSString *)message
+{
+    
+    UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Current view controller"
+                               message:message
+                               preferredStyle:UIAlertControllerStyleAlert];
+
+    UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
+                                   handler:^(UIAlertAction * action) {}];
+
+    [alert addAction:defaultAction];
+    [self presentViewController:alert animated:YES completion:nil];
+    
+    NSLog(@"ERRORE: %@", message);
 }
 
 @end

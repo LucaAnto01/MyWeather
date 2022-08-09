@@ -8,6 +8,7 @@
 #import "FavoritesViewController.h"
 #import "../../Library/UICustomElements/UIWeatherTableCell/WeatherTableCell.h"
 #import "../AddFavorites/AddFavoritesViewController.h"
+#import "../Details/DetailsViewController.h"
 
 @interface FavoritesViewController ()
 
@@ -15,7 +16,7 @@
 @property (nonatomic, strong) NSMutableArray *favForecast;
 @property (nonatomic, strong) NSUserDefaults *favs;
 
-//@property (nonatomic, readonly) long selectedRow;
+@property (nonatomic, readonly) NSIndexPath *selectedRow;
 
 @end
 
@@ -35,6 +36,7 @@
         
         _favs = [NSUserDefaults standardUserDefaults];
         _favForecast = [[NSMutableArray alloc] init];
+        
         //[self refreshTableView];
     }
     
@@ -55,6 +57,11 @@
         NSLog(@"ERRORE: %@", exception.reason);
     }
     
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewWillAppear: animated];
 }
 
 /**Method to get a table view cell*/
@@ -78,6 +85,7 @@
         MDWeather *actualWeather = forecast.weatherArray[0];
         MDCoordinate *coordinate = forecast.coordinate;
         
+        weatherCell.forecast = forecast;
         weatherCell.weather = actualWeather;
         weatherCell.coordinate = coordinate;
         weatherCell.favs = _favs;
@@ -108,12 +116,12 @@
 /**Method for setting the number of Weather cell of the table*/
 - (NSInteger) tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    NSInteger numberOfFavCities = _favForecast.count;
+    /*NSInteger numberOfFavCities = _favForecast.count;
     
     if(numberOfFavCities == 0)
-        [self showAlertControl_withMessage:@"You have not entered any favorite locations yet"];
+        [self showAlertControl_withMessage:@"You have not entered any favorite locations yet"];*/
     
-    return numberOfFavCities;
+    return _favForecast.count;
 }
 
 /**Method to get the selected row*/
@@ -122,10 +130,15 @@
      _selectedRow = indexPath.row;
  }*/
 
+/**Method fo see details of forcast and set the selected row*/
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    WeatherTableCell *selectedWeatherCell = (WeatherTableCell *)[tableView cellForRowAtIndexPath:indexPath];
-    NSLog(@"%@", selectedWeatherCell.lbCity.text);
+    _selectedRow = indexPath;
+    
+    [self performSegueWithIdentifier:@"navDetail" sender:self];
+    
+    
+    //NSLog(@"%@", selectedWeatherCell.lbCity.text);
 }
 
 /**Function call for update data of table view*/
@@ -170,6 +183,11 @@
                 [_favForecast addObject:newForecast];
             }
         }
+        
+        NSInteger numberOfFavCities = _favForecast.count;
+        
+        if(numberOfFavCities == 0)
+            [self showAlertControl_withMessage:@"You have not entered any favorite locations yet"];
     }
     
     @catch (NSException *exception)
@@ -191,6 +209,18 @@
                 AddFavoritesViewController *afvc = (AddFavoritesViewController *) segue.destinationViewController;
                 afvc.serviceWeather = self.serviceWeather; //Set serviceWeather
                 afvc.favs = self.favs;
+            }
+        }
+        
+        else if([segue.identifier isEqualToString:@"navDetail"])
+        {
+            if([segue.destinationViewController isKindOfClass:[DetailsViewController class]])
+            {
+                DetailsViewController *dvc = (DetailsViewController *) segue.destinationViewController;
+                dvc.serviceWeather = self.serviceWeather; //Set serviceWeather
+                
+                WeatherTableCell *selectedWeatherCell = (WeatherTableCell *)[_twFavorites cellForRowAtIndexPath:_selectedRow];
+                dvc.forecast = selectedWeatherCell.forecast;
             }
         }
     }

@@ -58,19 +58,7 @@
     
     @catch (NSException *exception)
     {
-        NSString *error = exception.reason;
-        
-        UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Map view controller"
-                                   message:error
-                                   preferredStyle:UIAlertControllerStyleAlert];
-
-        UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
-                                       handler:^(UIAlertAction * action) {}];
-
-        [alert addAction:defaultAction];
-        [self presentViewController:alert animated:YES completion:nil];
-        
-        NSLog(@"ERRORE: %@", exception.reason);
+        [self showAlertControl_withMessage:exception.reason];
     }
 
 }
@@ -83,12 +71,36 @@
 - (void) centerMapToLocation:(CLLocationCoordinate2D)location
                         zoom:(double)zoom
 {
-    MKCoordinateRegion mapRegion;
-    mapRegion.center = location;
-    mapRegion.span.latitudeDelta = zoom;
-    mapRegion.span.longitudeDelta = zoom;
-    [self.mkMapView setRegion:mapRegion animated:YES];
+    @try
+    {
+        MKCoordinateRegion mapRegion;
+        mapRegion.center = location;
+        mapRegion.span.latitudeDelta = zoom;
+        mapRegion.span.longitudeDelta = zoom;
+        [self.mkMapView setRegion:mapRegion animated:YES];
+    }
+    
+    @catch (NSException *exception)
+    {
+        [self showAlertControl_withMessage:exception.reason];
+    }
 }
 
+/**Method to display a popup in case of error*/
+- (void) showAlertControl_withMessage:(NSString *)message
+{
+    
+    UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Map view controller"
+                               message:message
+                               preferredStyle:UIAlertControllerStyleAlert];
+
+    UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
+                                   handler:^(UIAlertAction * action) {}];
+
+    [alert addAction:defaultAction];
+    [self presentViewController:alert animated:YES completion:nil];
+    
+    NSLog(@"ERRORE: %@", message);
+}
 
 @end

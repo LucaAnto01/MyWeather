@@ -34,7 +34,7 @@
 {
     [super viewDidLoad];
 
-    [self setSelectedIndex:1];
+    
     //[_tbHome setSelectedItem: [_tbHome.items objectAtIndex:1]];
     
     //[_tbHome selectedItem: [_tbHome.items objectAtIndex:0]];
@@ -45,6 +45,8 @@
     
     @try
     {
+        [self setSelectedIndex:1];
+        
         self.delegate = self;
         
         /**Get favorites*/
@@ -73,19 +75,7 @@
     
     @catch (NSException *exception)
     {
-        NSString *error = exception.reason;
-        
-        UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Current view controller"
-                                   message:error
-                                   preferredStyle:UIAlertControllerStyleAlert];
-
-        UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
-                                       handler:^(UIAlertAction * action) {}];
-
-        [alert addAction:defaultAction];
-        [self presentViewController:alert animated:YES completion:nil];
-        
-        NSLog(@"ERRORE: %@", exception.reason);
+        [self showAlertControl_withMessage:exception.reason];
     }
     
     //_uiViewGradientColor = [[UIViewGradientColor alloc] initWithFrame:CGRectZero];
