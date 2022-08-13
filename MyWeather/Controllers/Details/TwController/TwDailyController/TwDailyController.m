@@ -6,6 +6,7 @@
 //
 
 #import "TwDailyController.h"
+#import "../../../../Library/UICustomElements/UIDetailsWeatherTableCell/DetailWeatherTableCell.h"
 
 @interface TwDailyController ()
 
@@ -16,12 +17,6 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
-    
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
 
 /**Method for setting the number of Weather cell of the table*/
@@ -36,58 +31,55 @@
     return 55; //In according with the height of the object
 }
 
-/*
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:<#@"reuseIdentifier"#> forIndexPath:indexPath];
+/**Method to get a table view cell*/
+- (UITableViewCell *) tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    @try
+    {
+        static NSString *identifier = @"DetailWeatherCell";
+        
+        DetailWeatherTableCell *detailWeatherCell = (DetailWeatherTableCell *)[tableView dequeueReusableCellWithIdentifier:identifier];
+        
+        if(!detailWeatherCell)
+        {
+            NSArray *nswth = [[NSBundle mainBundle] loadNibNamed:@"DetailWeatherTableCell" owner:self options:nil]; //Method found on stackoverflow --> create an object with certain name
+            detailWeatherCell = [nswth objectAtIndex:0];
+        }
+        
+        NSInteger i = indexPath.row;
+ 
+        detailWeatherCell.weather = _todayHoursWeather[i];
     
-    // Configure the cell...
+        detailWeatherCell.lbWeather.text = [_todayHoursWeather[i] getWeatherImage];
+        detailWeatherCell.lbMaxTmp.text = [NSString stringWithFormat:@"%.2f °C", detailWeatherCell.weather.maxTemperature];
+        detailWeatherCell.lbMinTmp.text = [NSString stringWithFormat:@"%.2f °C", detailWeatherCell.weather.minTemperature];
+        
+        return detailWeatherCell;
+    }
     
-    return cell;
+    @catch (NSException *exception)
+    {
+        [self showAlertControl_withMessage:exception.reason];
+    }
+    
+    return nil;
 }
-*/
 
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
+/**Method to display a popup in case of error*/
+- (void) showAlertControl_withMessage:(NSString *)message
+{
+    
+    UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Table view Daily controller"
+                               message:message
+                               preferredStyle:UIAlertControllerStyleAlert];
+
+    UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
+                                   handler:^(UIAlertAction * action) {}];
+
+    [alert addAction:defaultAction];
+    [self presentViewController:alert animated:YES completion:nil];
+    
+    NSLog(@"ERRORE: %@", message);
 }
-*/
-
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    } else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
-}
-*/
-
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath {
-}
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

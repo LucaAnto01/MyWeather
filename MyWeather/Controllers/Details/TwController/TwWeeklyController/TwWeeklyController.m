@@ -75,7 +75,7 @@
 - (void) showAlertControl_withMessage:(NSString *)message
 {
     
-    UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Details view controller"
+    UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Table view Weekly controller"
                                message:message
                                preferredStyle:UIAlertControllerStyleAlert];
 
