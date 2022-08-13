@@ -24,7 +24,7 @@
     
 }
 
-- (NSString *) getWeatherImage_fromIndex:(int)index
+/*- (NSString *) getWeatherImage_fromIndex:(int)index
 {
     NSString *weatherImage = @"";
     if(_weatherArray)
@@ -38,13 +38,13 @@
         shortDescription = [shortDescription stringByReplacingOccurrencesOfString:@")" withString:@""];
         shortDescription = [shortDescription stringByReplacingOccurrencesOfString:@" " withString:@""];
         
-        char *partOfDay = serachedWeather.partOfDay;
+        unichar partOfDay = serachedWeather.partOfDay;
         
         //Setting image
         //In according with https://openweathermap.org/weather-conditions
         if([shortDescription isEqualToString:@"Clear"])
         {
-            if(partOfDay == ((char *)'d'))
+            if(partOfDay == 'd')
                 weatherImage = @"☀️";
             else
                 weatherImage = @"🌙";
@@ -87,6 +87,6 @@
     }
     
     return weatherImage;
-}
+}*/
 
 @end

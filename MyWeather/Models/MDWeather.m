@@ -16,7 +16,7 @@
                             hour:(NSDateComponents *)hour
                          sunrise:(NSDateComponents *)sunrise
                           sunset:(NSDateComponents *)sunset
-                       partOfDay:(char *)partOfDay //Day or night
+                       partOfDay:(unichar)partOfDay //Day or night
                      temperature:(double)temperature
                 feelsTemperature:(double)feelsTemperature
                   minTemperature:(double)minTemperature
@@ -62,7 +62,7 @@
                             hour:(NSDateComponents *)hour
                          sunrise:(NSDateComponents *)sunrise
                           sunset:(NSDateComponents *)sunset
-                       partOfDay:(char *)partOfDay //Day or night
+                       partOfDay:(unichar)partOfDay //Day or night
                      temperature:(double)temperature
                 feelsTemperature:(double)feelsTemperature
                   minTemperature:(double)minTemperature
@@ -111,7 +111,7 @@
                             hour:(NSDateComponents *)hour
                          sunrise:(NSDateComponents *)sunrise
                           sunset:(NSDateComponents *)sunset
-                       partOfDay:(char *)partOfDay //Day or night
+                       partOfDay:(unichar)partOfDay //Day or night
                      temperature:(double)temperature
                 feelsTemperature:(double)feelsTemperature
                   minTemperature:(double)minTemperature
@@ -167,9 +167,10 @@
         _pressure = [[mainBlock valueForKey:@"pressure"] intValue];
         _humidity = [[mainBlock valueForKey:@"humidity"] intValue];
         
+        //Use [0][@"element"] syntax for this reason: https://stackoverflow.com/questions/46939729/what-means-nssingleobjectarrayi-in-objective-c-when-i-try-to-read-a-json
         NSArray *weatherBlock = [jsonWeatherData objectForKey:@"weather"]; //Get weather block of list block
-        _weather = [weatherBlock valueForKey:@"main"];
-        _weatherDescription = [weatherBlock valueForKey:@"description"];
+        _weather = weatherBlock[0][@"main"];
+        _weatherDescription = weatherBlock[0][@"description"];
         
         NSArray *cloudBlock = [jsonWeatherData objectForKey:@"cloud"]; //Get cloud block of list block
         _clouds = [[cloudBlock valueForKey:@"all"] intValue];
@@ -207,7 +208,7 @@
         }
         
         NSArray *partOfDayBlock = [jsonWeatherData objectForKey:@"sys"]; //Get part of day block of list block
-        _partOfDay = (char *)[[partOfDayBlock valueForKey:@"pod"] UTF8String];
+        _partOfDay = /*(unichar)*/[[partOfDayBlock valueForKey:@"pod"] characterAtIndex:0];
         
         NSString *dateTmp = [jsonWeatherData valueForKey:@"dt_txt"]; //Get date block of list block
         NSDateFormatter *dateFormatter = [[NSDateFormatter alloc]init];
@@ -265,5 +266,56 @@
     NSString *hourString = [NSString stringWithFormat: @"%d:%d", (int)hour, (int)minute];
     
     return hourString;
+}
+
+- (NSString *) getWeatherImage
+{
+    NSString *weatherImage = @"";
+    //Setting image
+    //In according with https://openweathermap.org/weather-conditions
+    if([_weather isEqualToString:@"Clear"])
+    {
+        if(_partOfDay == 'd')
+            weatherImage = @"☀️";
+        else
+            weatherImage = @"🌙";
+    }
+    
+    else if([_weather isEqualToString:@"Clouds"])
+    {
+        weatherImage = @"☁️";
+    }
+    
+    else if(([_weather isEqualToString:@"Mist"]) || ([_weather isEqualToString:@"Smoke"]) || ([_weather isEqualToString:@"Haze"]) || ([_weather isEqualToString:@"Dust"]) || ([_weather isEqualToString:@"Fog"]) || ([_weather isEqualToString:@"Sand"]) || ([_weather isEqualToString:@"Ash"]) || ([_weather isEqualToString:@"Squall"]) || ([_weather isEqualToString:@"Tornado"]))
+    {
+        weatherImage = @"🌫";
+    }
+    
+    else if([_weather isEqualToString:@"Snow"])
+    {
+        weatherImage = @"❄️";
+    }
+    
+    else if([_weather isEqualToString:@"Drizzle"])
+    {
+        weatherImage = @"☔️";
+    }
+    
+    else if([_weather isEqualToString:@"Rain"])
+    {
+        weatherImage = @"🌧";
+    }
+    
+    else if([_weather isEqualToString:@"Thunderstorm"])
+    {
+        weatherImage = @"⛈";
+    }
+    
+    else
+    {
+        weatherImage = @"❌"; //In case of error
+    }
+    
+    return weatherImage;
 }
 @end

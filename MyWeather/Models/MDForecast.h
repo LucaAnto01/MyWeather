@@ -22,7 +22,7 @@
                        weatherArray:(NSMutableArray *)weatherArray;
 
 /**Get the weather image for a specific weather*/
-- (NSString *) getWeatherImage_fromIndex:(int)index;
+//- (NSString *) getWeatherImage_fromIndex:(int)index;
 
 @property (nonatomic, strong) MDCoordinate *coordinate;
 @property (nonatomic, strong) NSMutableArray *weatherArray;

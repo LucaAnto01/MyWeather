@@ -6,11 +6,20 @@
 //
 
 #import "DetailsViewController.h"
+#import "TwController/TwWeeklyController/TwWeeklyController.h"
+#import "TwController/TwDailyController/TwDailyController.h"
 
 @interface DetailsViewController ()
 
-@property (nonatomic, strong) NSMutableArray *dailyWeather;
+@property (weak, nonatomic) IBOutlet UILabel *lbCity;
+@property (weak, nonatomic) IBOutlet UITableView *twDaily;
+@property (weak, nonatomic) IBOutlet UITableView *twWeekly;
+
+
+@property (nonatomic, strong) NSMutableArray *weeklyWeather;
+@property (nonatomic, strong) TwWeeklyController *twWeeklyController;
 @property (nonatomic, strong) NSMutableArray *todayHoursWeather;
+@property (nonatomic, strong) TwDailyController *twDailyController;
 
 @end
 
@@ -18,12 +27,28 @@
 
 - (void)viewDidLoad
 {
-    [super viewDidLoad];
+    @try
+    {
+        [super viewDidLoad];
+        
+        _weeklyWeather = [[NSMutableArray alloc] init];
+        _twWeeklyController = [[TwWeeklyController alloc] init];
+        _todayHoursWeather = [[NSMutableArray alloc] init];
+        _twDailyController = [[TwDailyController alloc] init];
+        
+        self.twWeekly.delegate = _twWeeklyController; //Set delegate
+        self.twWeekly.dataSource = _twWeeklyController; //Set deta source
+        self.twDaily.delegate = _twDailyController; //Set delegate
+        self.twDaily.dataSource = _twDailyController; //Set deta source
+        
+        [self populateWeeklyWeather];
+        _twWeeklyController.weeklyWeather = _weeklyWeather;
+    }
     
-    _dailyWeather = [[NSMutableArray alloc] init];
-    _todayHoursWeather = [[NSMutableArray alloc] init];
-    
-    [self populateDailyWeather];
+    @catch (NSException *exception)
+    {
+        [self showAlertControl_withMessage:exception.reason];
+    }
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -31,14 +56,16 @@
     [super viewWillAppear: animated];
 }
 
-/**Method to set daily weather array, splitting the data*/
-- (void) populateDailyWeather
+/**Method to set weekly weather array, splitting the data*/
+- (void) populateWeeklyWeather
 {
     @try
     {
+        _lbCity.text = _forecast.coordinate.city;
+        
         NSInteger dayIndex = 0;
         
-        [_dailyWeather addObject:[_forecast.weatherArray objectAtIndex:0]]; //Adding first day
+        [_weeklyWeather addObject:[_forecast.weatherArray objectAtIndex:0]]; //Adding first day
         
         NSInteger i;
         
@@ -56,7 +83,7 @@
             NSInteger current_day = [current_components day];
             
             //Selected weather
-            MDWeather *selected_weather = [_dailyWeather objectAtIndex:dayIndex];
+            MDWeather *selected_weather = [_weeklyWeather objectAtIndex:dayIndex];
             NSDateComponents *selected_components = [[NSCalendar currentCalendar] components:componentFlags fromDate:selected_weather.date];
             //NSInteger selected_year = [selected_components year];
             //NSInteger selected_month = [selected_components month];
@@ -65,11 +92,11 @@
             if(current_day != selected_day)
             {
                 dayIndex++;
-                [_dailyWeather addObject:current_weather];
+                [_weeklyWeather addObject:current_weather];
             }
         }
         
-        [_dailyWeather removeObjectAtIndex:1];
+        [_weeklyWeather removeObjectAtIndex:1];
     }
     
     @catch (NSException *exception)

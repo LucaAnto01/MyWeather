@@ -42,19 +42,7 @@
     
     @catch (NSException *exception)
     {
-        NSString *error = exception.reason;
-        
-        UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Favorites view controller"
-                                   message:error
-                                   preferredStyle:UIAlertControllerStyleAlert];
-
-        UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
-                                       handler:^(UIAlertAction * action) {}];
-
-        [alert addAction:defaultAction];
-        [self presentViewController:alert animated:YES completion:nil];
-        
-        NSLog(@"ERRORE: %@", exception.reason);
+        [self showAlertControl_withMessage:exception.reason];
     }
     
 }
@@ -77,7 +65,6 @@
         {
             NSArray *nswth = [[NSBundle mainBundle] loadNibNamed:@"WeatherTableCell" owner:self options:nil]; //Method found on stackoverflow --> create an object with certain name
             weatherCell = [nswth objectAtIndex:0];
-            
         }
         
         NSInteger i = indexPath.row;
@@ -92,7 +79,7 @@
         weatherCell.fvcRef = self;
         
         weatherCell.lbCity.text = weatherCell.coordinate.city;
-        weatherCell.lbWeather.text = [forecast getWeatherImage_fromIndex:0];
+        weatherCell.lbWeather.text = [actualWeather getWeatherImage];
         weatherCell.lbMaxTemperature.text = [NSString stringWithFormat:@"%.2f °C", weatherCell.weather.maxTemperature];
         weatherCell.lbMinTemperature.text = [NSString stringWithFormat:@"%.2f °C", weatherCell.weather.minTemperature];
         
@@ -115,12 +102,7 @@
 
 /**Method for setting the number of Weather cell of the table*/
 - (NSInteger) tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-{
-    /*NSInteger numberOfFavCities = _favForecast.count;
-    
-    if(numberOfFavCities == 0)
-        [self showAlertControl_withMessage:@"You have not entered any favorite locations yet"];*/
-    
+{    
     return _favForecast.count;
 }
 

@@ -159,9 +159,9 @@
             _lbTemperature.text = [NSString stringWithFormat:@"%.2f°C", actualWeather.temperature];
             
             NSString *shortDescription = [NSString stringWithFormat:@"%@", actualWeather.weather];
-            NSString *descriptionTmp = [NSString stringWithFormat:@"%@", actualWeather.weatherDescription];
+            NSString *description = [NSString stringWithFormat:@"%@", actualWeather.weatherDescription];
             //Clean string
-            shortDescription = [shortDescription stringByReplacingOccurrencesOfString:@"\n" withString:@""];
+            /*shortDescription = [shortDescription stringByReplacingOccurrencesOfString:@"\n" withString:@""];
             shortDescription = [shortDescription stringByReplacingOccurrencesOfString:@"(" withString:@""];
             shortDescription = [shortDescription stringByReplacingOccurrencesOfString:@")" withString:@""];
             shortDescription = [shortDescription stringByReplacingOccurrencesOfString:@" " withString:@""];
@@ -169,13 +169,14 @@
             descriptionTmp = [descriptionTmp stringByReplacingOccurrencesOfString:@"\n" withString:@""];
             descriptionTmp = [descriptionTmp stringByReplacingOccurrencesOfString:@"(" withString:@""];
             descriptionTmp = [descriptionTmp stringByReplacingOccurrencesOfString:@")" withString:@""];
-            descriptionTmp = [descriptionTmp stringByReplacingOccurrencesOfString:@"\"" withString:@""];
-            NSString *description = [descriptionTmp substringFromIndex:3]; //Remove spaces
+            descriptionTmp = [descriptionTmp stringByReplacingOccurrencesOfString:@"\"" withString:@""];*/
+            //NSString *description = [descriptionTmp substringFromIndex:3]; //Remove spaces
             //Set value of lables
             _lbShortDescription.text = shortDescription;
             _lbDescription.text = description;
             
-            _lbWeather.text = [_forecast getWeatherImage_fromIndex:0];
+            NSString *weatherImage = [actualWeather getWeatherImage];
+            _lbWeather.text = weatherImage;
         }
         
         else

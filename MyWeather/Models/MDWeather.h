@@ -18,7 +18,7 @@
         NSDateComponents *_hour;
         NSDateComponents *_sunrise;
         NSDateComponents *_sunset;
-        char *_partOfDay;
+        unichar _partOfDay;
         double _temperature;
         double _feelsTemperature;
         double _minTemperature;
@@ -41,7 +41,7 @@
                             hour:(NSDateComponents *)hour
                          sunrise:(NSDateComponents *)sunrise
                           sunset:(NSDateComponents *)sunset
-                       partOfDay:(char *)partOfDay //Day or night
+                       partOfDay:(unichar)partOfDay //Day or night
                      temperature:(double)temperature
                 feelsTemperature:(double)feelsTemperature
                   minTemperature:(double)minTemperature
@@ -60,7 +60,7 @@
                             hour:(NSDateComponents *)hour
                          sunrise:(NSDateComponents *)sunrise
                           sunset:(NSDateComponents *)sunset
-                       partOfDay:(char *)partOfDay //Day or night
+                       partOfDay:(unichar)partOfDay //Day or night
                      temperature:(double)temperature
                 feelsTemperature:(double)feelsTemperature
                   minTemperature:(double)minTemperature
@@ -81,7 +81,7 @@
                             hour:(NSDateComponents *)hour
                          sunrise:(NSDateComponents *)sunrise
                           sunset:(NSDateComponents *)sunset
-                       partOfDay:(char *)partOfDay //Day or night
+                       partOfDay:(unichar)partOfDay //Day or night
                      temperature:(double)temperature
                 feelsTemperature:(double)feelsTemperature
                   minTemperature:(double)minTemperature
@@ -105,7 +105,7 @@
 @property (nonatomic, strong) NSDateComponents *hour;
 @property (nonatomic, strong) NSDateComponents *sunrise;
 @property (nonatomic, strong) NSDateComponents *sunset;
-@property (nonatomic, readonly) char *partOfDay;
+@property (nonatomic, readonly) unichar partOfDay;
 @property (nonatomic, readonly) double temperature;
 @property (nonatomic, readonly) double feelsTemperature;
 @property (nonatomic, readonly) double minTemperature;
@@ -125,5 +125,7 @@
 -(NSString *) hourToString;
 -(NSString *) sunriseToString;
 -(NSString *) sunsetToString;
+/**Get the weather image for a specific weather*/
+- (NSString *) getWeatherImage;
 
 @end
