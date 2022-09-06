@@ -130,7 +130,7 @@
                 
                 MDWeather *weather = newForecast.weatherArray[0]; //Current weather in the i-pleace
                 
-                [_mkMapView addAnnotation:weather];
+                [self.mkMapView addAnnotation:weather];
             }
         }
         
