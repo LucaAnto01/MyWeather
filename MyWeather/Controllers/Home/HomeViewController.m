@@ -196,41 +196,4 @@
     NSLog(@"ERRORE: %@", message);
 }
 
-/**Method called up when switching to current view controller*/
-/*- (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    if([segue.identifier isEqualToString:@"currentNav"])
-    {
-        if([segue.destinationViewController isKindOfClass:[CurrentViewController class]])
-        {
-            CurrentViewController *cvc = (CurrentViewController *) segue.destinationViewController;
-            //cvc.serviceWeather = _serviceWeather;
-            //cvc.forecast = _forecast;
-            
-        }
-    }
-    
-    if([segue.identifier isEqualToString:@"mapNav"])
-    {
-        if([segue.destinationViewController isKindOfClass:[MapViewController class]])
-        {
-            MapViewController *cvc = (MapViewController *) segue.destinationViewController;
-            //cvc.serviceWeather = _serviceWeather;
-            //cvc.forecast = _forecast;
-            
-        }
-    }
-    
-    if([segue.identifier isEqualToString:@"favoritesNav"])
-    {
-        if([segue.destinationViewController isKindOfClass:[FavoritesViewController class]])
-        {
-            FavoritesViewController *fvc = (FavoritesViewController *) segue.destinationViewController;
-            //cvc.serviceWeather = _serviceWeather;
-            //cvc.forecast = _forecast;
-            
-        }
-    }
-}*/
-
 @end

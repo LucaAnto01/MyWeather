@@ -6,9 +6,12 @@
 //
 
 #import "TwWeeklyController.h"
+#import "../../../../Application/Services/ApplicationSession.h"
 #import "../../../../Library/UICustomElements/UIDetailsWeatherTableCell/DetailWeatherTableCell.h"
 
 @interface TwWeeklyController ()
+
+@property (strong, nonatomic) IBOutlet UITableView *twWeekly;
 
 @end
 
@@ -18,11 +21,14 @@
 {
     [super viewDidLoad];
     
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
+    _weeklyWeather = [[NSMutableArray alloc] init];
+    _forecast = [[MDForecast alloc] init];
     
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    _forecast = [ApplicationSession getSelectedForecast];
+    [self populateWeeklyWeather];
+    
+    _twWeekly.dataSource = self;
+    _twWeekly.delegate = self;
 }
 
 /**Method for setting the number of Weather cell of the table*/
@@ -69,6 +75,53 @@
     }
     
     return nil;
+}
+
+/**Method to set weekly weather array, splitting the data*/
+- (void) populateWeeklyWeather
+{
+    @try
+    {
+        NSInteger dayIndex = 0;
+        
+        [_weeklyWeather addObject:[_forecast.weatherArray objectAtIndex:0]]; //Adding first day
+        
+        NSInteger i;
+        
+        for(i = 1; i < _forecast.weatherArray.count; i++) //Scrool all weather of the forecast
+        {
+            MDWeather *current_weather = [_forecast.weatherArray objectAtIndex:i];
+            NSDate *dayWeather = current_weather.date;
+            
+            NSUInteger componentFlags = NSCalendarUnitYear | NSCalendarUnitMonth |  NSCalendarUnitDay;
+            
+            //Current weather
+            NSDateComponents *current_components = [[NSCalendar currentCalendar] components:componentFlags fromDate:dayWeather];
+            //NSInteger current_year = [current_components year];
+            //NSInteger current_month = [current_components month];
+            NSInteger current_day = [current_components day];
+            
+            //Selected weather
+            MDWeather *selected_weather = [_weeklyWeather objectAtIndex:dayIndex];
+            NSDateComponents *selected_components = [[NSCalendar currentCalendar] components:componentFlags fromDate:selected_weather.date];
+            //NSInteger selected_year = [selected_components year];
+            //NSInteger selected_month = [selected_components month];
+            NSInteger selected_day = [selected_components day];
+            
+            if(current_day != selected_day)
+            {
+                dayIndex++;
+                [_weeklyWeather addObject:current_weather];
+            }
+        }
+        
+        [_weeklyWeather removeObjectAtIndex:1];
+    }
+    
+    @catch (NSException *exception)
+    {
+        [self showAlertControl_withMessage:exception.reason];
+    }
 }
 
 /**Method to display a popup in case of error*/

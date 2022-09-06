@@ -11,7 +11,6 @@
 #import "../../Models/MDCoordinate.h"
 #import "../../Models/MDWeather.h"
 #import "../../Models/MDForecast.h"
-#import <MapKit/MapKit.h>
 #import <CoreLocation/CoreLocation.h>
 
 @interface MapViewController () <MKMapViewDelegate/*, CLLocationManagerDelegate*/>

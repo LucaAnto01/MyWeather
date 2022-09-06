@@ -7,6 +7,7 @@
 
 #import "CurrentViewController.h"
 #import "../../Library/UICustomElements/UIViewGradientColor/UIViewGradientColor.h"
+#import "../../Application/Services/ApplicationSession.h"
 #import "../../Application/Services/ServiceWeather.h"
 #import "../../Models/MDCoordinate.h"
 #import "../../Models/MDWeather.h"
@@ -151,6 +152,9 @@
     {
         _forecast = [_serviceWeather getForecastWith_latitude:_latitude
                                                     longitude:_longitude]; //Get forecast
+        
+        //Update the current forecast in session
+        [ApplicationSession setCurrentForecast:_forecast];
         
         if(_forecast)
         {

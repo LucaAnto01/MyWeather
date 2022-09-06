@@ -6,6 +6,7 @@
 //
 
 #import "FavoritesViewController.h"
+#import "../../Application/Services/ApplicationSession.h"
 #import "../../Library/UICustomElements/UIWeatherTableCell/WeatherTableCell.h"
 #import "../AddFavorites/AddFavoritesViewController.h"
 #import "../Details/DetailsViewController.h"
@@ -119,8 +120,6 @@
     
     [self performSegueWithIdentifier:@"navDetail" sender:self];
     
-    
-    //NSLog(@"%@", selectedWeatherCell.lbCity.text);
 }
 
 /**Function call for update data of table view*/
@@ -202,6 +201,8 @@
                 dvc.serviceWeather = self.serviceWeather; //Set serviceWeather
                 
                 WeatherTableCell *selectedWeatherCell = (WeatherTableCell *)[_twFavorites cellForRowAtIndexPath:_selectedRow];
+                //Update the selected forecast in session
+                [ApplicationSession setSelectedForecast:selectedWeatherCell.forecast];
                 dvc.forecast = selectedWeatherCell.forecast;
             }
         }
