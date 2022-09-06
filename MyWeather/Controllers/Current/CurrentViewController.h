@@ -21,4 +21,7 @@
 /**Method for update the view*/
 -(void) updateView;
 
+/**Method to display a popup in case of error*/
+- (void) showAlertControl_withMessage:(NSString *)message;
+
 @end

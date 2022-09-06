@@ -16,4 +16,7 @@
 @property (nonatomic, strong) ServiceWeather *serviceWeather;
 @property (nonatomic, strong) MDForecast *forecast;
 
+/**Method to display a popup in case of error*/
+- (void) showAlertControl_withMessage:(NSString *)message;
+
 @end

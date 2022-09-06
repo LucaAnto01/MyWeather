@@ -172,13 +172,13 @@
                             <containerView opaque="NO" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3qq-nu-dNi">
                                 <rect key="frame" x="20" y="219" width="374" height="128"/>
                                 <connections>
-                                    <segue destination="pju-bN-MgP" kind="embed" id="TXD-E8-Ssw"/>
+                                    <segue destination="pju-bN-MgP" kind="embed" identifier="twDailySegue" id="TXD-E8-Ssw"/>
                                 </connections>
                             </containerView>
                             <containerView opaque="NO" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Sfr-YW-0Hu">
                                 <rect key="frame" x="20" y="488" width="374" height="128"/>
                                 <connections>
-                                    <segue destination="Xw1-O2-x5h" kind="embed" id="pIS-Mn-N6J"/>
+                                    <segue destination="Xw1-O2-x5h" kind="embed" identifier="twWeeklySegue" id="pIS-Mn-N6J"/>
                                 </connections>
                             </containerView>
                         </subviews>

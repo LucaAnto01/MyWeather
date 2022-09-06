@@ -160,6 +160,8 @@
         else if([viewController isKindOfClass: [MapViewController class]])
         {
             MapViewController *mvc = (MapViewController *) viewController;
+            mvc.serviceWeather = _serviceWeather;
+            [mvc updateFavoritesPlaces];
             //hash.userArray = feed.userArray;
         }
         

@@ -14,8 +14,6 @@
 @interface FavoritesViewController ()
 
 @property (weak, nonatomic) IBOutlet UITableView *twFavorites;
-@property (nonatomic, strong) NSMutableArray *favForecast;
-@property (nonatomic, strong) NSUserDefaults *favs;
 
 @property (nonatomic, readonly) NSIndexPath *selectedRow;
 

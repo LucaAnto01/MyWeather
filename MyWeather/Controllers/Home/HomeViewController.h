@@ -9,4 +9,7 @@
 
 @interface HomeViewController : UITabBarController <UITabBarControllerDelegate>
 
+/**Method to display a popup in case of error*/
+- (void) showAlertControl_withMessage:(NSString *)message;
+
 @end

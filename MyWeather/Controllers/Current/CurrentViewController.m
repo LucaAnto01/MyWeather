@@ -35,13 +35,6 @@
 {
     [super viewDidLoad];
     
-    /*UIScrollView *scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size. height)];
-    scrollView.backgroundColor = [UIColor clearColor];
-    [scrollView addSubview:self.view];
-
-    scrollView.contentSize = scrollView.frame.size;
-
-    [self.view addSubview:scrollView];*/
     @try
     {
         /**Location manager initialisation*/
@@ -65,13 +58,6 @@
     {
         [self showAlertControl_withMessage:exception.reason];
     }
-    /*[self.view addSubview:_uiViewGradientColor];
-    
-    _uiViewGradientColor.translatesAutoresizingMaskIntoConstraints = false;
-    [_uiViewGradientColor.topAnchor constraintEqualToAnchor:self.view.topAnchor].active = true;
-    [_uiViewGradientColor.leadingAnchor constraintEqualToAnchor:self.view.leadingAnchor].active = true;
-    [_uiViewGradientColor.trailingAnchor constraintEqualToAnchor:self.view.trailingAnchor].active = true;
-    [_uiViewGradientColor.bottomAnchor constraintEqualToAnchor:self.view.bottomAnchor].active = true;*/
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -159,17 +145,7 @@
             
             NSString *shortDescription = [NSString stringWithFormat:@"%@", actualWeather.weather];
             NSString *description = [NSString stringWithFormat:@"%@", actualWeather.weatherDescription];
-            //Clean string
-            /*shortDescription = [shortDescription stringByReplacingOccurrencesOfString:@"\n" withString:@""];
-            shortDescription = [shortDescription stringByReplacingOccurrencesOfString:@"(" withString:@""];
-            shortDescription = [shortDescription stringByReplacingOccurrencesOfString:@")" withString:@""];
-            shortDescription = [shortDescription stringByReplacingOccurrencesOfString:@" " withString:@""];
-            
-            descriptionTmp = [descriptionTmp stringByReplacingOccurrencesOfString:@"\n" withString:@""];
-            descriptionTmp = [descriptionTmp stringByReplacingOccurrencesOfString:@"(" withString:@""];
-            descriptionTmp = [descriptionTmp stringByReplacingOccurrencesOfString:@")" withString:@""];
-            descriptionTmp = [descriptionTmp stringByReplacingOccurrencesOfString:@"\"" withString:@""];*/
-            //NSString *description = [descriptionTmp substringFromIndex:3]; //Remove spaces
+
             //Set value of lables
             _lbShortDescription.text = shortDescription;
             _lbDescription.text = description;

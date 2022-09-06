@@ -13,4 +13,7 @@
 @property (nonatomic, strong) MDForecast *forecast;
 @property (nonatomic, strong) NSMutableArray *todayHoursWeather;
 
+/**Method to display a popup in case of error*/
+- (void) showAlertControl_withMessage:(NSString *)message;
+
 @end

@@ -23,6 +23,7 @@
 		812E1C8B28940A780033156B /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 812E1C8A28940A780033156B /* MapViewController.m */; };
 		812E1C94289411D00033156B /* CurrentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 812E1C93289411D00033156B /* CurrentViewController.m */; };
 		8130E305289AE6CE000495F2 /* AddFavoritesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8130E304289AE6CE000495F2 /* AddFavoritesViewController.m */; };
+		813580F928C7D9AB00118926 /* MDWeather+MapAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 813580F828C7D9AB00118926 /* MDWeather+MapAnnotation.m */; };
 		8136464128959794008B3E2D /* FavoritesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8136464028959794008B3E2D /* FavoritesViewController.m */; };
 		8136464628959985008B3E2D /* WeatherTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8136464428959985008B3E2D /* WeatherTableCell.m */; };
 		8136464728959985008B3E2D /* WeatherTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8136464528959985008B3E2D /* WeatherTableCell.xib */; };
@@ -85,6 +86,8 @@
 		812E1C93289411D00033156B /* CurrentViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CurrentViewController.m; sourceTree = "<group>"; };
 		8130E303289AE6CE000495F2 /* AddFavoritesViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AddFavoritesViewController.h; sourceTree = "<group>"; };
 		8130E304289AE6CE000495F2 /* AddFavoritesViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AddFavoritesViewController.m; sourceTree = "<group>"; };
+		813580F728C7D9AB00118926 /* MDWeather+MapAnnotation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MDWeather+MapAnnotation.h"; sourceTree = "<group>"; };
+		813580F828C7D9AB00118926 /* MDWeather+MapAnnotation.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "MDWeather+MapAnnotation.m"; sourceTree = "<group>"; };
 		8136463F28959794008B3E2D /* FavoritesViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FavoritesViewController.h; sourceTree = "<group>"; };
 		8136464028959794008B3E2D /* FavoritesViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FavoritesViewController.m; sourceTree = "<group>"; };
 		8136464328959985008B3E2D /* WeatherTableCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WeatherTableCell.h; sourceTree = "<group>"; };
@@ -186,6 +189,8 @@
 				811A4920288F2D47008B35A5 /* MDWeather.m */,
 				811A4922288F2D6B008B35A5 /* MDForecast.h */,
 				811A4923288F2D6B008B35A5 /* MDForecast.m */,
+				813580F728C7D9AB00118926 /* MDWeather+MapAnnotation.h */,
+				813580F828C7D9AB00118926 /* MDWeather+MapAnnotation.m */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -536,6 +541,7 @@
 				812A020728903DED00BB68C7 /* UIViewGradientColor.m in Sources */,
 				8130E305289AE6CE000495F2 /* AddFavoritesViewController.m in Sources */,
 				8136464128959794008B3E2D /* FavoritesViewController.m in Sources */,
+				813580F928C7D9AB00118926 /* MDWeather+MapAnnotation.m in Sources */,
 				8140713E28761D500017A4E9 /* AppDelegate.m in Sources */,
 				8128935228A6637B005D092D /* TwWeeklyController.m in Sources */,
 				810762A328C5E74700BE0E6C /* ApplicationSession.m in Sources */,
