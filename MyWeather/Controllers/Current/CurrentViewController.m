@@ -27,11 +27,6 @@
 @property (nonatomic, readonly) double latitude;
 @property (nonatomic, readonly) double longitude;
 
-/*@property (nonatomic, strong) ServiceWeather *serviceWeather;
-//@property (nonatomic, strong) UIViewGradientColor *uiViewGradientColor;
-@property (nonatomic,strong) CLLocationManager *locationManager;
-@property (nonatomic, strong) MDForecast *forecast;*/
-
 @end
 
 @implementation CurrentViewController
