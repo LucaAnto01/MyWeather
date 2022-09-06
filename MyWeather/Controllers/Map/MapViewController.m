@@ -17,7 +17,7 @@
 
 @property (strong, nonatomic) IBOutlet MKMapView *mkMapView;
 
-//@property (nonatomic,strong) CLLocationManager *locationManager;
+@property (nonatomic,strong) CLLocationManager *locationManager;
 
 - (void) centerMapToLocation:(CLLocationCoordinate2D)location
                         zoom:(double)zoom;
@@ -33,7 +33,7 @@
     @try
     {
         /**Location manager initialisation*/
-        /*_locationManager = [[CLLocationManager alloc]init]; //Alloc
+        _locationManager = [[CLLocationManager alloc]init]; //Alloc
         _locationManager.delegate = (id)self;
         _locationManager.desiredAccuracy = kCLLocationAccuracyHundredMeters; //Set precision
         
@@ -42,7 +42,7 @@
             [_locationManager requestWhenInUseAuthorization];
         }
         
-        [_locationManager startUpdatingLocation]; //Update position*/
+        [_locationManager startUpdatingLocation]; //Update position
         
         
         self.mkMapView.delegate = self;
