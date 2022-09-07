@@ -18,6 +18,12 @@
     return coordinate;
 }
 
+/**Get the title --> wwather image*/
+- (NSString *)title
+{
+    return [NSString stringWithFormat:@"%@", self.weatherImage];;
+}
+
 /**Get the short description of the MapAnnotation*/
 - (NSString *)getShortDescription
 {
