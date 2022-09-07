@@ -229,7 +229,7 @@
 -(NSString *) dateToString
 {
     NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
-    [dateFormat setDateFormat:@"yyyy-MM-dd"];
+    [dateFormat setDateFormat:@"dd/MM/yyyy"];
     NSString *finalDate = [dateFormat stringFromDate:_date];
     
     return finalDate;
