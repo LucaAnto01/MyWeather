@@ -96,7 +96,21 @@
             _userLocation = CLLocationCoordinate2DMake(currentLocation.coordinate.latitude, currentLocation.coordinate.longitude);
         
         [self centerMapToLocation:CLLocationCoordinate2DMake(_userLocation.latitude,_userLocation.longitude)
-                             zoom:0.1];
+                             zoom:0.1]; //Center map where's the user
+        
+        //Getting the meteo info for the current position and generate the map annotation
+        MDForecast *newForecast = [_serviceWeather getForecastWith_latitude:currentLocation.coordinate.latitude
+                                                                  longitude:currentLocation.coordinate.longitude];
+        
+        MDWeather *currentWeather = newForecast.weatherArray[0];
+        
+        MDWeatherCoordinate *weatherCoordinate = [[MDWeatherCoordinate alloc] initWithWeather:currentWeather.weather
+                                                                           weatherDescription:currentWeather.weatherDescription
+                                                                                 weatherImage:currentWeather.getWeatherImage
+                                                                                     latitude:newForecast.coordinate.latitude
+                                                                                    longitude:newForecast.coordinate.longitude];
+
+        [self.mkMapView addAnnotation:weatherCoordinate]; //Add map annotation to map
 
     }
     
@@ -138,9 +152,8 @@
                                                                                          weatherImage:currentWeather.getWeatherImage
                                                                                              latitude:newForecast.coordinate.latitude
                                                                                             longitude:newForecast.coordinate.longitude];
-                //weatherCoordinate.coordinate = newForecast.coordinate;
-                //weatherCoordinate.weather = newForecast.weatherArray[0];
-                [self.mkMapView addAnnotation:weatherCoordinate];
+
+                [self.mkMapView addAnnotation:weatherCoordinate]; //Add map annotation to map
                 
             }
         }
@@ -183,11 +196,6 @@
             annotationView = [[MKPinAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier: PinReuseIdentifier];
             annotationView.canShowCallout = YES;
         }
-        //Customize annotationView
-
-        /*UILabel *lbWeather =  [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 36, 36)];
-        lbWeather.text = @"";
-        annotationView.leftCalloutAccessoryView = lbWeather;*/
         
         return annotationView;
     }
