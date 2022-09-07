@@ -241,7 +241,7 @@
     NSInteger hour = [_hour hour];
     NSInteger minute = [_hour minute];
     
-    NSString *hourString = [NSString stringWithFormat: @"%d:%d", (int)hour, (int)minute];
+    NSString *hourString = [NSString stringWithFormat: @"%02d:%02d", (int)hour, (int)minute];
     
     return hourString;
 }
@@ -252,7 +252,7 @@
     NSInteger hour = [_sunrise hour];
     NSInteger minute = [_sunrise minute];
     
-    NSString *hourString = [NSString stringWithFormat: @"%d:%d", (int)hour, (int)minute];
+    NSString *hourString = [NSString stringWithFormat: @"%02d:%02d", (int)hour, (int)minute];
     
     return hourString;
 }
@@ -263,7 +263,7 @@
     NSInteger hour = [_sunset hour];
     NSInteger minute = [_sunset minute];
     
-    NSString *hourString = [NSString stringWithFormat: @"%d:%d", (int)hour, (int)minute];
+    NSString *hourString = [NSString stringWithFormat: @"%02d:%02d", (int)hour, (int)minute];
     
     return hourString;
 }
