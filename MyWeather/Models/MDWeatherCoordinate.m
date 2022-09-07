@@ -15,6 +15,7 @@
                    weatherImage:(NSString *)weatherImage
                        latitude:(double)latitude
                       longitude:(double)longitude
+                       forecast:(MDForecast*)forecast
 {
     if(self = [super init])
     {
@@ -23,6 +24,7 @@
         _weatherImage = weatherImage;
         _latitude = latitude;
         _longitude = longitude;
+        _forecast = forecast;
     }
     
     return self;

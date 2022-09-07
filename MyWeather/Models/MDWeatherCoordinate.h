@@ -6,6 +6,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "MDForecast.h"
 #import "MDWeather.h"
 #import "MDCoordinate.h"
 
@@ -20,6 +21,7 @@ NS_ASSUME_NONNULL_BEGIN
         NSString *_weatherImage;
         double _latitude;
         double _longitude;
+        MDForecast *_forecast;
 }
 
 @property (nonatomic, strong) NSString *weather;
@@ -27,13 +29,15 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong) NSString *weatherImage;
 @property (nonatomic, readwrite) double latitude;
 @property (nonatomic, readwrite) double longitude;
+@property (nonatomic, readwrite) MDForecast *forecast;
 
 /**Constructor method*/
 -(instancetype) initWithWeather:(NSString *)weather
              weatherDescription:(NSString *)weatherDescription
                    weatherImage:(NSString *)weatherImage
                        latitude:(double)latitude
-                      longitude:(double)longitude;
+                      longitude:(double)longitude
+                       forecast:(MDForecast*)forecast;
 
 @end
 

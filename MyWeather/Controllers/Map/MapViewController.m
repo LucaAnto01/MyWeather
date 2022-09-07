@@ -108,7 +108,8 @@
                                                                            weatherDescription:currentWeather.weatherDescription
                                                                                  weatherImage:currentWeather.getWeatherImage
                                                                                      latitude:newForecast.coordinate.latitude
-                                                                                    longitude:newForecast.coordinate.longitude];
+                                                                                    longitude:newForecast.coordinate.longitude
+                                                                                     forecast:newForecast];
 
         [self.mkMapView addAnnotation:weatherCoordinate]; //Add map annotation to map
 
@@ -151,7 +152,8 @@
                                                                                    weatherDescription:currentWeather.weatherDescription
                                                                                          weatherImage:currentWeather.getWeatherImage
                                                                                              latitude:newForecast.coordinate.latitude
-                                                                                            longitude:newForecast.coordinate.longitude];
+                                                                                            longitude:newForecast.coordinate.longitude
+                                                                                             forecast:newForecast];
 
                 [self.mkMapView addAnnotation:weatherCoordinate]; //Add map annotation to map
                 
