@@ -48,8 +48,7 @@
         //Setting map
         self.mkMapView.delegate = self;
         
-        //[self centerMapToLocation:CLLocationCoordinate2DMake(_userLocation.latitude,_userLocation.longitude)
-                             //zoom:0.1];
+        
         self.mkMapView.showsUserLocation = YES;
         
         [_mkMapView setCenterCoordinate:_mkMapView.userLocation.coordinate animated:YES];
@@ -95,6 +94,9 @@
         
         if(currentLocation != nil)
             _userLocation = CLLocationCoordinate2DMake(currentLocation.coordinate.latitude, currentLocation.coordinate.longitude);
+        
+        [self centerMapToLocation:CLLocationCoordinate2DMake(_userLocation.latitude,_userLocation.longitude)
+                             zoom:0.1];
 
     }
     

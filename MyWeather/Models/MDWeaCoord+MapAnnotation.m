@@ -24,6 +24,12 @@
     return [NSString stringWithFormat:@"%@", self.weatherImage];;
 }
 
+/**Get the title --> wwather image*/
+- (NSString *)subtitle
+{
+    return [NSString stringWithFormat:@"%@", self.weatherDescription];;
+}
+
 /**Get the short description of the MapAnnotation*/
 - (NSString *)getShortDescription
 {
