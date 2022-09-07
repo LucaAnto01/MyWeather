@@ -1,20 +1,20 @@
 //
-//  MDWeather+MapAnnotation.m
+//  MDWeaCoord+MapAnnotation.m
 //  MyWeather
 //
-//  Created by Luca on 06/09/22.
+//  Created by Luca on 07/09/22.
 //
 
-#import "MDWeather+MapAnnotation.h"
+#import "MDWeaCoord+MapAnnotation.h"
 
-@implementation MDWeather(MapAnnotation)
+@implementation MDWeatherCoordinate(MapAnnotation)
 
 /**Get the coordinate of the MapAnnotation*/
 -(CLLocationCoordinate2D) coordinate
 {
     CLLocationCoordinate2D coordinate;
-    coordinate.latitude = self.coordinate.latitude;
-    coordinate.longitude = self.coordinate.longitude;
+    coordinate.latitude = self.latitude;
+    coordinate.longitude = self.longitude;
     return coordinate;
 }
 
@@ -33,7 +33,7 @@
 /**Get the image  of the MapAnnotation*/
 - (NSString *)getImage
 {
-    return [NSString stringWithFormat:@"%@", self.getWeatherImage]; //Is the "image" --> emoji
+    return [NSString stringWithFormat:@"%@", self.weatherImage]; //Is the "image" --> emoji
 }
 
 @end

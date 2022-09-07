@@ -63,51 +63,6 @@
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewWillAppear: animated];
-    
-    /*@try
-    {
-        [_serviceWeather updateData]; //Update data about new location
-        _forecast = [_serviceWeather getForecast]; //Get forecast
-        
-        if(_forecast)
-        {
-            _lbCity.text = [NSString stringWithFormat:@"%@, %@", _forecast.coordinate.city, _forecast.coordinate.country];
-            MDWeather *actualWeather = _forecast.weatherArray[0];
-            _lbTemperature.text = [NSString stringWithFormat:@"%.2f°C", actualWeather.temperature];
-            _lbShortDescription.text = [NSString stringWithFormat:@"%@", actualWeather.weather];
-            _lbDescription.text = [NSString stringWithFormat:@"%@", actualWeather.weatherDescription];
-        }
-        
-        else
-        {
-            UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Current view controller"
-                                       message:@"Check your connection"
-                                       preferredStyle:UIAlertControllerStyleAlert];
-
-            UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
-                                           handler:^(UIAlertAction * action) {}];
-
-            [alert addAction:defaultAction];
-            [self presentViewController:alert animated:YES completion:nil];
-        }
-    }
-    
-    @catch (NSException *exception)
-    {
-        NSString *error = exception.reason;
-        
-        UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Current view controller"
-                                   message:error
-                                   preferredStyle:UIAlertControllerStyleAlert];
-
-        UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
-                                       handler:^(UIAlertAction * action) {}];
-
-        [alert addAction:defaultAction];
-        [self presentViewController:alert animated:YES completion:nil];
-        
-        NSLog(@"ERRORE: %@", exception.reason);
-    }*/
 }
 
 /**Click on button update*/

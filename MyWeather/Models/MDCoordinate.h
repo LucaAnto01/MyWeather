@@ -7,6 +7,8 @@
 
 #import <Foundation/Foundation.h>
 
+NS_ASSUME_NONNULL_BEGIN
+
 @interface MDCoordinate : NSObject
 {
     /**Attributes*/
@@ -25,7 +27,9 @@
 
 @property (nonatomic, strong) NSString *city;
 @property (nonatomic, strong) NSString *country;
-@property (nonatomic, readonly) double latitude;
-@property (nonatomic, readonly) double longitude;
+@property (nonatomic, readwrite) double latitude;
+@property (nonatomic, readwrite) double longitude;
 
 @end
+
+NS_ASSUME_NONNULL_END
