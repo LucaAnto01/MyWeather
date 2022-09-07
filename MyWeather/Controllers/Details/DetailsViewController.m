@@ -13,8 +13,8 @@
 
 @property (weak, nonatomic) IBOutlet UILabel *lbCity;
 
-@property (weak, nonatomic) IBOutlet UIView *containerTwDaily;
-@property (weak, nonatomic) IBOutlet UIView *containerTwWeekly;
+@property (nonatomic, strong) IBOutlet UIView *containerTwDaily;
+@property (nonatomic, strong) IBOutlet UIView *containerTwWeekly;
 
 
 @property (nonatomic, strong) NSMutableArray *weeklyWeather;
@@ -68,6 +68,46 @@
 {
     [super viewWillAppear: animated];
 }
+
+
+
+
+/**Segue method*/
+- (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    @try
+    {
+        if([segue.identifier isEqualToString:@"twDailySegue"])
+        {
+            if([segue.destinationViewController isKindOfClass:[TwDailyController class]])
+            {
+                TwDailyController *twdc = (TwDailyController *) segue.destinationViewController;
+                twdc.forecast = _forecast;
+                [twdc refreshTableView];
+                //afvc.serviceWeather = self.serviceWeather; //Set serviceWeather
+                //afvc.favs = self.favs;
+            }
+        }
+        
+        else if([segue.identifier isEqualToString:@"twWeeklySegue"])
+        {
+            if([segue.destinationViewController isKindOfClass:[TwWeeklyController class]])
+            {
+                TwWeeklyController *twwc = (TwWeeklyController *) segue.destinationViewController;
+                twwc.weeklyWeather = _weeklyWeather;
+                //afvc.serviceWeather = self.serviceWeather; //Set serviceWeather
+                //afvc.favs = self.favs;
+            }
+        }
+    }
+    
+    @catch (NSException *exception)
+    {
+        [self showAlertControl_withMessage:exception.reason];
+    }
+}
+
+
 
 
 

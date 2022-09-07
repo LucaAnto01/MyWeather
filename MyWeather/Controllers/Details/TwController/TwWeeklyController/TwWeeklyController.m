@@ -31,16 +31,16 @@
     _twWeekly.delegate = self;
 }
 
-/**Method for setting the number of Weather cell of the table*/
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
-{
-    return _weeklyWeather.count;
-}
-
 /**Method for setting the height of Weather cell*/
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+- (CGFloat) tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     return 55; //In according with the height of the object
+}
+
+/**Method for setting the number of Weather cell of the table*/
+- (NSInteger) tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return _weeklyWeather.count;
 }
 
 /**Method to get a table view cell*/
@@ -82,6 +82,11 @@
 {
     @try
     {
+        if(_weeklyWeather == nil)
+            _weeklyWeather = [[NSMutableArray alloc] init];
+            
+        [_weeklyWeather removeAllObjects]; //Clean array
+        
         NSInteger dayIndex = 0;
         
         [_weeklyWeather addObject:[_forecast.weatherArray objectAtIndex:0]]; //Adding first day

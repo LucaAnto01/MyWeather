@@ -170,6 +170,8 @@
     }
 }
 
+#pragma mark - Show error
+
 /**Method to display a popup in case of error*/
 - (void) showAlertControl_withMessage:(NSString *)message
 {

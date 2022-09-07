@@ -37,6 +37,7 @@
 		8140715928761D530017A4E9 /* MyWeatherTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 8140715828761D530017A4E9 /* MyWeatherTests.m */; };
 		8140716328761D530017A4E9 /* MyWeatherUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 8140716228761D530017A4E9 /* MyWeatherUITests.m */; };
 		8140716528761D530017A4E9 /* MyWeatherUITestsLaunchTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 8140716428761D530017A4E9 /* MyWeatherUITestsLaunchTests.m */; };
+		8141202E28C92B4400B49D89 /* DetailScrollViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8141202D28C92B4400B49D89 /* DetailScrollViewController.m */; };
 		814368A428A2563300570D86 /* DetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 814368A328A2563300570D86 /* DetailsViewController.m */; };
 		81A777572892B70F004065F0 /* ServiceWeather.m in Sources */ = {isa = PBXBuildFile; fileRef = 81A777562892B70F004065F0 /* ServiceWeather.m */; };
 /* End PBXBuildFile section */
@@ -111,6 +112,8 @@
 		8140715E28761D530017A4E9 /* MyWeatherUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MyWeatherUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8140716228761D530017A4E9 /* MyWeatherUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyWeatherUITests.m; sourceTree = "<group>"; };
 		8140716428761D530017A4E9 /* MyWeatherUITestsLaunchTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyWeatherUITestsLaunchTests.m; sourceTree = "<group>"; };
+		8141202C28C92B4400B49D89 /* DetailScrollViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DetailScrollViewController.h; sourceTree = "<group>"; };
+		8141202D28C92B4400B49D89 /* DetailScrollViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DetailScrollViewController.m; sourceTree = "<group>"; };
 		814368A228A2563300570D86 /* DetailsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DetailsViewController.h; sourceTree = "<group>"; };
 		814368A328A2563300570D86 /* DetailsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DetailsViewController.m; sourceTree = "<group>"; };
 		81A777552892B70F004065F0 /* ServiceWeather.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ServiceWeather.h; sourceTree = "<group>"; };
@@ -158,6 +161,7 @@
 		811A4914288F2661008B35A5 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				8141202B28C92B0800B49D89 /* DetailScrool */,
 				814368A128A2560400570D86 /* Details */,
 				8130E302289AE6A6000495F2 /* AddFavorites */,
 				81364638289591BD008B3E2D /* Favorites */,
@@ -391,6 +395,15 @@
 			path = MyWeatherUITests;
 			sourceTree = "<group>";
 		};
+		8141202B28C92B0800B49D89 /* DetailScrool */ = {
+			isa = PBXGroup;
+			children = (
+				8141202C28C92B4400B49D89 /* DetailScrollViewController.h */,
+				8141202D28C92B4400B49D89 /* DetailScrollViewController.m */,
+			);
+			path = DetailScrool;
+			sourceTree = "<group>";
+		};
 		814368A128A2560400570D86 /* Details */ = {
 			isa = PBXGroup;
 			children = (
@@ -558,6 +571,7 @@
 				8119083328A7D8D600441151 /* DetailWeatherTableCell.m in Sources */,
 				8140714128761D500017A4E9 /* SceneDelegate.m in Sources */,
 				812E1C94289411D00033156B /* CurrentViewController.m in Sources */,
+				8141202E28C92B4400B49D89 /* DetailScrollViewController.m in Sources */,
 				812E1C8B28940A780033156B /* MapViewController.m in Sources */,
 				811A4924288F2D6B008B35A5 /* MDForecast.m in Sources */,
 				811CD7F028C8B0F80008D74D /* MDWeatherCoordinate.m in Sources */,

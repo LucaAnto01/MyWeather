@@ -21,26 +21,61 @@
 {
     [super viewDidLoad];
     
-    _todayHoursWeather = [[NSMutableArray alloc] init];
-    _forecast = [[MDForecast alloc] init];
+    //_todayHoursWeather = [[NSMutableArray alloc] init];
+    //_forecast = [[MDForecast alloc] init];
     
-    _forecast = [ApplicationSession getSelectedForecast];
-    [self populateTodayHoursWeather];
+    //_forecast = [ApplicationSession getSelectedForecast];
+    //[self populateTodayHoursWeather];
     
-    _twDaily.dataSource = self;
     _twDaily.delegate = self;
+    _twDaily.dataSource = self;
+    
+    _twDaily.refreshControl = [[UIRefreshControl alloc]init]; //Create a refresh control
+    [self.twDaily.refreshControl addTarget:self action:@selector(refreshTableView) forControlEvents:UIControlEventValueChanged];
+    
+    //[self refreshTableView];
 }
 
-/**Method for setting the number of Weather cell of the table*/
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewWillAppear: animated];
+    
+    [self.twDaily reloadData];
+}
+
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return _todayHoursWeather.count;
+    return 1;
 }
 
 /**Method for setting the height of Weather cell*/
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+- (CGFloat) tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     return 55; //In according with the height of the object
+}
+
+/**Method for setting the number of Weather cell of the table*/
+- (NSInteger) tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    NSInteger numberOfRows = _todayHoursWeather.count;
+    return numberOfRows;
+}
+
+/**Function call for update data of table view*/
+- (void) refreshTableView
+{
+    @try
+    {
+        [self populateTodayHoursWeather];
+        
+        [self.twDaily.refreshControl endRefreshing];
+        [self.twDaily reloadData];
+    }
+    
+    @catch (NSException *exception)
+    {
+        [self showAlertControl_withMessage:exception.reason];
+    }
 }
 
 /**Method to get a table view cell*/
@@ -82,6 +117,11 @@
 {
     @try
     {
+        if(_todayHoursWeather == nil)
+            _todayHoursWeather = [[NSMutableArray alloc] init];
+            
+        [_todayHoursWeather removeAllObjects]; //Clean array
+        
         MDWeather *current_weather = [_forecast.weatherArray objectAtIndex:0];
         //TODO: setta tutti i testi relativi ad oggi (tramonto etc)
         
@@ -119,6 +159,7 @@
         [self showAlertControl_withMessage:exception.reason];
     }
 }
+
 
 /**Method to display a popup in case of error*/
 - (void) showAlertControl_withMessage:(NSString *)message

@@ -10,6 +10,7 @@
 #import "../../Library/UICustomElements/UIWeatherTableCell/WeatherTableCell.h"
 #import "../AddFavorites/AddFavoritesViewController.h"
 #import "../Details/DetailsViewController.h"
+#import "../DetailScrool/DetailScrollViewController.h"
 
 @interface FavoritesViewController ()
 
@@ -116,8 +117,8 @@
 {
     _selectedRow = indexPath;
     
-    [self performSegueWithIdentifier:@"navDetail" sender:self];
-    
+    //[self performSegueWithIdentifier:@"navDetail" sender:self];
+    [self performSegueWithIdentifier:@"singleNavDetail" sender:self];
 }
 
 /**Function call for update data of table view*/
@@ -200,8 +201,38 @@
                 
                 WeatherTableCell *selectedWeatherCell = (WeatherTableCell *)[_twFavorites cellForRowAtIndexPath:_selectedRow];
                 //Update the selected forecast in session
-                [ApplicationSession setSelectedForecast:selectedWeatherCell.forecast];
+                //[ApplicationSession setSelectedForecast:selectedWeatherCell.forecast];
                 dvc.forecast = selectedWeatherCell.forecast;
+            }
+        }
+        
+        else if([segue.identifier isEqualToString:@"singleNavDetail"])
+        {
+            /*if([segue.destinationViewController isKindOfClass:[SingleDetailsViewController class]])
+            {
+                SingleDetailsViewController *sdvc = (SingleDetailsViewController *) segue.destinationViewController;
+                sdvc.serviceWeather = self.serviceWeather; //Set serviceWeather
+                
+                WeatherTableCell *selectedWeatherCell = (WeatherTableCell *)[_twFavorites cellForRowAtIndexPath:_selectedRow];
+                //Update the selected forecast in session
+                //[ApplicationSession setSelectedForecast:selectedWeatherCell.forecast];
+                sdvc.forecast = selectedWeatherCell.forecast;
+                
+                [sdvc populateTodayHoursWeather];
+            }*/
+            
+            if([segue.destinationViewController isKindOfClass:[DetailScrollViewController class]])
+            {
+                DetailScrollViewController *sdvc = (DetailScrollViewController *) segue.destinationViewController;
+                sdvc.serviceWeather = self.serviceWeather; //Set serviceWeather
+                
+                WeatherTableCell *selectedWeatherCell = (WeatherTableCell *)[_twFavorites cellForRowAtIndexPath:_selectedRow];
+                //Update the selected forecast in session
+                //[ApplicationSession setSelectedForecast:selectedWeatherCell.forecast];
+                sdvc.forecast = selectedWeatherCell.forecast;
+                
+                [sdvc populateTodayHoursWeather];
+                [sdvc populateWeeklyWeather];
             }
         }
     }
@@ -211,6 +242,8 @@
         [self showAlertControl_withMessage:exception.reason];
     }
 }
+
+#pragma mark - Show error
 
 /**Method to display a popup in case of error*/
 - (void) showAlertControl_withMessage:(NSString *)message
