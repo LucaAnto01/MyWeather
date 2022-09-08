@@ -168,7 +168,7 @@
     }
 
     CGSize newContentSize=_swScroll.contentSize;
-    newContentSize.height += (i * 50) + 20;
+    newContentSize.height += (i * 50) + 30;
     newContentSize.width = displayWidth;
     [_swScroll setContentSize:newContentSize];
 }
