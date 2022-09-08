@@ -268,8 +268,11 @@
             
             if(current_day != selected_day)
             {
-                dayIndex++;
-                [_weeklyWeather addObject:current_weather];
+                if(current_weather.partOfDay == 'd')
+                {
+                    dayIndex++;
+                    [_weeklyWeather addObject:current_weather];
+                }
             }
         }
         
