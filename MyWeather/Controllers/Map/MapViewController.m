@@ -12,6 +12,7 @@
 #import "../../Models/MDWeather.h"
 #import "../../Models/MDForecast.h"
 #import "../../Models/MDWeaCoord+MapAnnotation.h"
+#import "../DetailScrool/DetailScrollViewController.h"
 #import <CoreLocation/CoreLocation.h>
 
 @interface MapViewController () <MKMapViewDelegate, CLLocationManagerDelegate>
@@ -211,6 +212,44 @@
     }
     
     return nil;
+}
+
+- (void)mapView:(MKMapView *)mapView annotationView:(MKAnnotationView *)view calloutAccessoryControlTapped:(UIControl *)control
+{
+    if([control isEqual:view.rightCalloutAccessoryView])
+        [self performSegueWithIdentifier:@"navAddFav" sender:view];
+}
+
+/**Segue method*/
+- (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    @try
+    {
+        if([segue.identifier isEqualToString:@"navAddFav"])
+        {
+            if([segue.destinationViewController isKindOfClass:[DetailScrollViewController class]])
+            {
+                DetailScrollViewController *sdvc = (DetailScrollViewController *) segue.destinationViewController;
+                sdvc.serviceWeather = self.serviceWeather; //Set serviceWeather
+                
+                MKAnnotationView *view= (MKAnnotationView *)sender;
+                id<MKAnnotation> annotation = view.annotation;
+                if([annotation isKindOfClass:[MDWeatherCoordinate class]])
+                {
+                    MDWeatherCoordinate *weatherCoordinate = (MDWeatherCoordinate *)annotation;
+                    sdvc.forecast = weatherCoordinate.forecast;
+                }
+                                
+                [sdvc populateTodayHoursWeather];
+                [sdvc populateWeeklyWeather];
+            }
+        }
+    }
+    
+    @catch (NSException *exception)
+    {
+        [self showAlertControl_withMessage:exception.reason];
+    }
 }
 
 /*- (void) mapView:(MKMapView *)mapView didSelectAnnotationView:(MKAnnotationView *)view
