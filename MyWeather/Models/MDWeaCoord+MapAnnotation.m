@@ -9,6 +9,8 @@
 
 @implementation MDWeatherCoordinate(MapAnnotation)
 
+#pragma mark - Setting data
+
 /**Get the coordinate of the MapAnnotation*/
 -(CLLocationCoordinate2D) coordinate
 {

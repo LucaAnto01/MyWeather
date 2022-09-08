@@ -22,6 +22,13 @@
     [self createInterface];
 }
 
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewWillAppear: animated];
+}
+
+#pragma mark - Interface creation
+
 /**Method to create the interface*/
 - (void) createInterface
 {

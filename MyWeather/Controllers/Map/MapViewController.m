@@ -6,7 +6,6 @@
 //
 
 #import "MapViewController.h"
-#import "../../Library/UICustomElements/UIViewGradientColor/UIViewGradientColor.h"
 #import "../../Application/Services/ServiceWeather.h"
 #import "../../Models/MDCoordinate.h"
 #import "../../Models/MDWeather.h"
@@ -66,6 +65,8 @@
 {
     [super viewWillAppear: animated];
 }
+
+#pragma mark - Map managing
 
 /**Method to center the map*/
 - (void) centerMapToLocation:(CLLocationCoordinate2D)location

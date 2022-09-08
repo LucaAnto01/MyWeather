@@ -51,6 +51,8 @@
     [super viewWillAppear: animated];
 }
 
+#pragma mark - Favorite's table managing
+
 /**Method to get a table view cell*/
 - (UITableViewCell *) tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -168,6 +170,8 @@
     }
     
 }
+
+#pragma mark - Segue managing
 
 /**Segue method*/
 - (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender

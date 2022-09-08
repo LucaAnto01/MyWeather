@@ -9,6 +9,8 @@
 
 @implementation MDWeather
 
+#pragma mark - Constructor methods
+
 /**No precipitation constructor method*/
 - (instancetype) initWithWeather:(NSString *)weather
               weatherDescription:(NSString *)weatherDescription
@@ -224,6 +226,8 @@
     
     return self;
 }
+
+#pragma mark - Date formatter to string
 
 /**Get date as a string*/
 -(NSString *) dateToString

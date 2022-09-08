@@ -19,7 +19,6 @@
 		811EA674289577520065A94A /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 811EA66E2895745A0065A94A /* CoreLocation.framework */; };
 		811EA677289577540065A94A /* CoreLocationUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 811EA66F2895745A0065A94A /* CoreLocationUI.framework */; };
 		811EA679289577570065A94A /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 811EA672289574650065A94A /* MapKit.framework */; };
-		812A020728903DED00BB68C7 /* UIViewGradientColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 812A020628903DED00BB68C7 /* UIViewGradientColor.m */; };
 		812E1C8B28940A780033156B /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 812E1C8A28940A780033156B /* MapViewController.m */; };
 		812E1C94289411D00033156B /* CurrentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 812E1C93289411D00033156B /* CurrentViewController.m */; };
 		8130E305289AE6CE000495F2 /* AddFavoritesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8130E304289AE6CE000495F2 /* AddFavoritesViewController.m */; };
@@ -77,8 +76,6 @@
 		811EA66E2895745A0065A94A /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		811EA66F2895745A0065A94A /* CoreLocationUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocationUI.framework; path = System/Library/Frameworks/CoreLocationUI.framework; sourceTree = SDKROOT; };
 		811EA672289574650065A94A /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
-		812A020528903DED00BB68C7 /* UIViewGradientColor.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UIViewGradientColor.h; sourceTree = "<group>"; };
-		812A020628903DED00BB68C7 /* UIViewGradientColor.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UIViewGradientColor.m; sourceTree = "<group>"; };
 		812E1C8928940A780033156B /* MapViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MapViewController.h; sourceTree = "<group>"; };
 		812E1C8A28940A780033156B /* MapViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MapViewController.m; sourceTree = "<group>"; };
 		812E1C92289411D00033156B /* CurrentViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CurrentViewController.h; sourceTree = "<group>"; };
@@ -226,18 +223,8 @@
 			children = (
 				8134E6322897E0F500F5E4F3 /* UIDetailsWeatherTableCell */,
 				813646422895992E008B3E2D /* UIWeatherTableCell */,
-				812A020428903DB400BB68C7 /* UIViewGradientColor */,
 			);
 			path = UICustomElements;
-			sourceTree = "<group>";
-		};
-		812A020428903DB400BB68C7 /* UIViewGradientColor */ = {
-			isa = PBXGroup;
-			children = (
-				812A020528903DED00BB68C7 /* UIViewGradientColor.h */,
-				812A020628903DED00BB68C7 /* UIViewGradientColor.m */,
-			);
-			path = UIViewGradientColor;
 			sourceTree = "<group>";
 		};
 		812E1C852894091C0033156B /* Map */ = {
@@ -508,7 +495,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				811A4921288F2D47008B35A5 /* MDWeather.m in Sources */,
-				812A020728903DED00BB68C7 /* UIViewGradientColor.m in Sources */,
 				8130E305289AE6CE000495F2 /* AddFavoritesViewController.m in Sources */,
 				8136464128959794008B3E2D /* FavoritesViewController.m in Sources */,
 				8140713E28761D500017A4E9 /* AppDelegate.m in Sources */,
