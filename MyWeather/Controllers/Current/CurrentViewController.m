@@ -12,6 +12,7 @@
 #import "../../Models/MDCoordinate.h"
 #import "../../Models/MDWeather.h"
 #import "../../Models/MDForecast.h"
+#import "../DetailScrool/DetailScrollViewController.h"
 #import <CoreLocation/CoreLocation.h>
 
 @interface CurrentViewController () <CLLocationManagerDelegate>
@@ -161,6 +162,31 @@
             _longitude = coords.longitude;
             
             [self updateView]; //Update location to get data of the new location
+        }
+    }
+    
+    @catch (NSException *exception)
+    {
+        [self showAlertControl_withMessage:exception.reason];
+    }
+}
+
+/**Segue method*/
+- (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    @try
+    {
+        if([segue.identifier isEqualToString:@"navInfo"])
+        {
+            if([segue.destinationViewController isKindOfClass:[DetailScrollViewController class]])
+            {
+                DetailScrollViewController *sdvc = (DetailScrollViewController *) segue.destinationViewController;
+                sdvc.serviceWeather = self.serviceWeather; //Set serviceWeather
+                sdvc.forecast = _forecast;
+                                
+                [sdvc populateTodayHoursWeather];
+                [sdvc populateWeeklyWeather];
+            }
         }
     }
     

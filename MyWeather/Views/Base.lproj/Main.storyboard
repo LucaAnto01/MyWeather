@@ -250,12 +250,20 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gUv-9a-Leu">
-                                <rect key="frame" x="364" y="289" width="30" height="20"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gUv-9a-Leu">
+                                <rect key="frame" x="20" y="289" width="49" height="31"/>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" image="arrow.triangle.2.circlepath" catalog="system"/>
+                                <buttonConfiguration key="configuration" style="plain" image="arrow.triangle.2.circlepath" catalog="system" title=""/>
                                 <connections>
                                     <action selector="btUpdateClick:" destination="8sY-Gt-hK2" eventType="touchUpInside" id="3oi-Im-aoQ"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sxb-9P-Mf9">
+                                <rect key="frame" x="349" y="289" width="45" height="31"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" image="info.circle" catalog="system"/>
+                                <connections>
+                                    <segue destination="FBi-9g-pzb" kind="show" identifier="navInfo" id="8Fj-52-XKc"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -266,13 +274,15 @@
                             <constraint firstItem="8gm-wi-iJl" firstAttribute="top" secondItem="kAb-za-bas" secondAttribute="bottom" constant="65" id="1Ea-2P-ukf"/>
                             <constraint firstItem="8gm-wi-iJl" firstAttribute="centerX" secondItem="eGX-sK-AjQ" secondAttribute="centerX" id="1b3-hT-Kia"/>
                             <constraint firstItem="gUv-9a-Leu" firstAttribute="top" secondItem="fRH-gT-ON8" secondAttribute="top" constant="245" id="43N-Qu-rPC"/>
+                            <constraint firstItem="fRH-gT-ON8" firstAttribute="trailing" secondItem="sxb-9P-Mf9" secondAttribute="trailing" constant="20" id="CtA-xB-2kx"/>
                             <constraint firstItem="LeQ-94-NyH" firstAttribute="top" secondItem="kKx-P4-WJ1" secondAttribute="bottom" constant="65" id="KpH-on-lxa"/>
-                            <constraint firstItem="fRH-gT-ON8" firstAttribute="trailing" secondItem="gUv-9a-Leu" secondAttribute="trailing" constant="20" id="LJQ-eZ-4TM"/>
                             <constraint firstItem="J71-oW-146" firstAttribute="top" secondItem="8gm-wi-iJl" secondAttribute="bottom" constant="55" id="W46-hv-fpc"/>
+                            <constraint firstItem="sxb-9P-Mf9" firstAttribute="top" secondItem="fRH-gT-ON8" secondAttribute="top" constant="245" id="Wg7-b9-U9F"/>
                             <constraint firstItem="J71-oW-146" firstAttribute="centerX" secondItem="eGX-sK-AjQ" secondAttribute="centerX" id="X9j-ru-Lhb"/>
                             <constraint firstItem="LeQ-94-NyH" firstAttribute="centerX" secondItem="eGX-sK-AjQ" secondAttribute="centerX" id="b6j-KC-QJo"/>
                             <constraint firstItem="kAb-za-bas" firstAttribute="centerX" secondItem="eGX-sK-AjQ" secondAttribute="centerX" id="eV8-P5-ymI"/>
                             <constraint firstItem="kKx-P4-WJ1" firstAttribute="top" secondItem="fRH-gT-ON8" secondAttribute="top" constant="50" id="gh5-Rx-Yor"/>
+                            <constraint firstItem="gUv-9a-Leu" firstAttribute="leading" secondItem="fRH-gT-ON8" secondAttribute="leading" constant="20" id="rrP-2Q-1xy"/>
                             <constraint firstItem="kKx-P4-WJ1" firstAttribute="centerX" secondItem="eGX-sK-AjQ" secondAttribute="centerX" id="u4v-cE-zmt"/>
                         </constraints>
                     </view>
@@ -452,15 +462,16 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xOM-iO-akB" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3985.507246376812" y="1044.6428571428571"/>
+            <point key="canvasLocation" x="1803" y="544"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="Mvj-NS-7Q8"/>
+        <segue reference="8Fj-52-XKc"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.46761089560000002" green="0.91748040909999995" blue="0.86313265559999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
     <resources>
         <image name="arrow.triangle.2.circlepath" catalog="system" width="128" height="101"/>
+        <image name="info.circle" catalog="system" width="128" height="121"/>
         <image name="map" catalog="system" width="128" height="110"/>
         <image name="mappin" catalog="system" width="105" height="128"/>
         <image name="star" catalog="system" width="128" height="116"/>
