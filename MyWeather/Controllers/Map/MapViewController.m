@@ -199,6 +199,9 @@
             annotationView.canShowCallout = YES;
         }
         
+        annotationView.annotation = annotation;
+        annotationView.rightCalloutAccessoryView = [UIButton buttonWithType:UIButtonTypeInfoDark];
+        
         return annotationView;
     }
     
@@ -209,6 +212,32 @@
     
     return nil;
 }
+
+/*- (void) mapView:(MKMapView *)mapView didSelectAnnotationView:(MKAnnotationView *)view
+{
+    if([view.leftCalloutAccessoryView isKindOfClass:[UIImageView class]]){
+        __block UIImageView *imageView = (UIImageView *)view.leftCalloutAccessoryView;
+        id<MKAnnotation> annotation = view.annotation;
+        if([annotation isKindOfClass:[City class]]) {
+            City *city = (City *)annotation;
+            dispatch_queue_t queue = dispatch_queue_create("get_meteo_information", NULL);
+            // get meteo informations to update callout view's image
+            dispatch_async(queue, ^{
+                NSString *urlString = [NSString stringWithFormat: @"https://api.open-meteo.com/v1/forecast?latitude=%f&longitude=%f&current_weather=true", city.latitude, city.longitude];
+                NSURL *url = [NSURL URLWithString:urlString];
+                NSData *data = [NSData dataWithContentsOfURL:url];
+                id value = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
+                NSDictionary *weather = (NSDictionary *)value;
+                // get current weather informations
+                NSDictionary *current_weather = [weather valueForKey:@"current_weather"];
+                NSNumber *weathercode = [current_weather valueForKey:@"weathercode"];
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    imageView.image = [self imageForWeatherCode:weathercode.intValue];
+                });
+            });
+        }
+    }
+}*/
 
 #pragma mark - Show error
 
