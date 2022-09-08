@@ -12,7 +12,7 @@
 #import "../../Models/MDCoordinate.h"
 #import "../../Models/MDWeather.h"
 #import "../../Models/MDForecast.h"
-#import "../DetailScrool/DetailScrollViewController.h"
+#import "../Details/DetailScrollViewController.h"
 #import <CoreLocation/CoreLocation.h>
 
 @interface CurrentViewController () <CLLocationManagerDelegate>

@@ -12,7 +12,7 @@
 #import "../../Models/MDWeather.h"
 #import "../../Models/MDForecast.h"
 #import "../../Models/MDWeaCoord+MapAnnotation.h"
-#import "../DetailScrool/DetailScrollViewController.h"
+#import "../Details/DetailScrollViewController.h"
 #import <CoreLocation/CoreLocation.h>
 
 @interface MapViewController () <MKMapViewDelegate, CLLocationManagerDelegate>

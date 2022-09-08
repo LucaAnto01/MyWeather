@@ -19,8 +19,6 @@
 		811EA674289577520065A94A /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 811EA66E2895745A0065A94A /* CoreLocation.framework */; };
 		811EA677289577540065A94A /* CoreLocationUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 811EA66F2895745A0065A94A /* CoreLocationUI.framework */; };
 		811EA679289577570065A94A /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 811EA672289574650065A94A /* MapKit.framework */; };
-		8128934E28A65A25005D092D /* TwDailyController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8128934D28A65A24005D092D /* TwDailyController.m */; };
-		8128935228A6637B005D092D /* TwWeeklyController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8128935128A6637B005D092D /* TwWeeklyController.m */; };
 		812A020728903DED00BB68C7 /* UIViewGradientColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 812A020628903DED00BB68C7 /* UIViewGradientColor.m */; };
 		812E1C8B28940A780033156B /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 812E1C8A28940A780033156B /* MapViewController.m */; };
 		812E1C94289411D00033156B /* CurrentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 812E1C93289411D00033156B /* CurrentViewController.m */; };
@@ -38,7 +36,6 @@
 		8140716328761D530017A4E9 /* MyWeatherUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 8140716228761D530017A4E9 /* MyWeatherUITests.m */; };
 		8140716528761D530017A4E9 /* MyWeatherUITestsLaunchTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 8140716428761D530017A4E9 /* MyWeatherUITestsLaunchTests.m */; };
 		8141202E28C92B4400B49D89 /* DetailScrollViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8141202D28C92B4400B49D89 /* DetailScrollViewController.m */; };
-		814368A428A2563300570D86 /* DetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 814368A328A2563300570D86 /* DetailsViewController.m */; };
 		81A777572892B70F004065F0 /* ServiceWeather.m in Sources */ = {isa = PBXBuildFile; fileRef = 81A777562892B70F004065F0 /* ServiceWeather.m */; };
 /* End PBXBuildFile section */
 
@@ -80,10 +77,6 @@
 		811EA66E2895745A0065A94A /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		811EA66F2895745A0065A94A /* CoreLocationUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocationUI.framework; path = System/Library/Frameworks/CoreLocationUI.framework; sourceTree = SDKROOT; };
 		811EA672289574650065A94A /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
-		8128934C28A65A24005D092D /* TwDailyController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TwDailyController.h; sourceTree = "<group>"; };
-		8128934D28A65A24005D092D /* TwDailyController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TwDailyController.m; sourceTree = "<group>"; };
-		8128935028A6637B005D092D /* TwWeeklyController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TwWeeklyController.h; sourceTree = "<group>"; };
-		8128935128A6637B005D092D /* TwWeeklyController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TwWeeklyController.m; sourceTree = "<group>"; };
 		812A020528903DED00BB68C7 /* UIViewGradientColor.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UIViewGradientColor.h; sourceTree = "<group>"; };
 		812A020628903DED00BB68C7 /* UIViewGradientColor.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UIViewGradientColor.m; sourceTree = "<group>"; };
 		812E1C8928940A780033156B /* MapViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MapViewController.h; sourceTree = "<group>"; };
@@ -114,8 +107,6 @@
 		8140716428761D530017A4E9 /* MyWeatherUITestsLaunchTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyWeatherUITestsLaunchTests.m; sourceTree = "<group>"; };
 		8141202C28C92B4400B49D89 /* DetailScrollViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DetailScrollViewController.h; sourceTree = "<group>"; };
 		8141202D28C92B4400B49D89 /* DetailScrollViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DetailScrollViewController.m; sourceTree = "<group>"; };
-		814368A228A2563300570D86 /* DetailsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DetailsViewController.h; sourceTree = "<group>"; };
-		814368A328A2563300570D86 /* DetailsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DetailsViewController.m; sourceTree = "<group>"; };
 		81A777552892B70F004065F0 /* ServiceWeather.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ServiceWeather.h; sourceTree = "<group>"; };
 		81A777562892B70F004065F0 /* ServiceWeather.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ServiceWeather.m; sourceTree = "<group>"; };
 		81FD576E2892D58500306E4A /* Location.gpx */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Location.gpx; sourceTree = "<group>"; };
@@ -161,8 +152,7 @@
 		811A4914288F2661008B35A5 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				8141202B28C92B0800B49D89 /* DetailScrool */,
-				814368A128A2560400570D86 /* Details */,
+				8141202B28C92B0800B49D89 /* Details */,
 				8130E302289AE6A6000495F2 /* AddFavorites */,
 				81364638289591BD008B3E2D /* Favorites */,
 				812E1C91289411A30033156B /* Current */,
@@ -229,33 +219,6 @@
 				811EA66F2895745A0065A94A /* CoreLocationUI.framework */,
 			);
 			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		8128934B28A659C2005D092D /* TwDailyController */ = {
-			isa = PBXGroup;
-			children = (
-				8128934C28A65A24005D092D /* TwDailyController.h */,
-				8128934D28A65A24005D092D /* TwDailyController.m */,
-			);
-			path = TwDailyController;
-			sourceTree = "<group>";
-		};
-		8128934F28A6633D005D092D /* TwWeeklyController */ = {
-			isa = PBXGroup;
-			children = (
-				8128935028A6637B005D092D /* TwWeeklyController.h */,
-				8128935128A6637B005D092D /* TwWeeklyController.m */,
-			);
-			path = TwWeeklyController;
-			sourceTree = "<group>";
-		};
-		8128935328A66381005D092D /* TwController */ = {
-			isa = PBXGroup;
-			children = (
-				8128934B28A659C2005D092D /* TwDailyController */,
-				8128934F28A6633D005D092D /* TwWeeklyController */,
-			);
-			path = TwController;
 			sourceTree = "<group>";
 		};
 		812A020228903D4100BB68C7 /* UICustomElements */ = {
@@ -395,21 +358,11 @@
 			path = MyWeatherUITests;
 			sourceTree = "<group>";
 		};
-		8141202B28C92B0800B49D89 /* DetailScrool */ = {
+		8141202B28C92B0800B49D89 /* Details */ = {
 			isa = PBXGroup;
 			children = (
 				8141202C28C92B4400B49D89 /* DetailScrollViewController.h */,
 				8141202D28C92B4400B49D89 /* DetailScrollViewController.m */,
-			);
-			path = DetailScrool;
-			sourceTree = "<group>";
-		};
-		814368A128A2560400570D86 /* Details */ = {
-			isa = PBXGroup;
-			children = (
-				8128935328A66381005D092D /* TwController */,
-				814368A228A2563300570D86 /* DetailsViewController.h */,
-				814368A328A2563300570D86 /* DetailsViewController.m */,
 			);
 			path = Details;
 			sourceTree = "<group>";
@@ -554,17 +507,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8128934E28A65A25005D092D /* TwDailyController.m in Sources */,
 				811A4921288F2D47008B35A5 /* MDWeather.m in Sources */,
 				812A020728903DED00BB68C7 /* UIViewGradientColor.m in Sources */,
 				8130E305289AE6CE000495F2 /* AddFavoritesViewController.m in Sources */,
 				8136464128959794008B3E2D /* FavoritesViewController.m in Sources */,
 				8140713E28761D500017A4E9 /* AppDelegate.m in Sources */,
-				8128935228A6637B005D092D /* TwWeeklyController.m in Sources */,
 				811CD7F328C8B8C20008D74D /* MDWeaCoord+MapAnnotation.m in Sources */,
 				810762A328C5E74700BE0E6C /* ApplicationSession.m in Sources */,
 				8136464628959985008B3E2D /* WeatherTableCell.m in Sources */,
-				814368A428A2563300570D86 /* DetailsViewController.m in Sources */,
 				8140714F28761D520017A4E9 /* main.m in Sources */,
 				811A491A288F27DF008B35A5 /* HomeViewController.m in Sources */,
 				811A491E288F2D0A008B35A5 /* MDCoordinate.m in Sources */,

@@ -9,8 +9,7 @@
 #import "../../Application/Services/ApplicationSession.h"
 #import "../../Library/UICustomElements/UIWeatherTableCell/WeatherTableCell.h"
 #import "../AddFavorites/AddFavoritesViewController.h"
-#import "../Details/DetailsViewController.h"
-#import "../DetailScrool/DetailScrollViewController.h"
+#import "../Details/DetailScrollViewController.h"
 
 @interface FavoritesViewController ()
 
@@ -106,19 +105,12 @@
     return _favForecast.count;
 }
 
-/**Method to get the selected row*/
-/*- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
- {
-     _selectedRow = indexPath.row;
- }*/
-
 /**Method fo see details of forcast and set the selected row*/
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     _selectedRow = indexPath;
     
-    //[self performSegueWithIdentifier:@"navDetail" sender:self];
-    [self performSegueWithIdentifier:@"singleNavDetail" sender:self];
+    [self performSegueWithIdentifier:@"navDetail" sender:self];
 }
 
 /**Function call for update data of table view*/
@@ -192,35 +184,9 @@
             }
         }
         
+        
         else if([segue.identifier isEqualToString:@"navDetail"])
         {
-            if([segue.destinationViewController isKindOfClass:[DetailsViewController class]])
-            {
-                DetailsViewController *dvc = (DetailsViewController *) segue.destinationViewController;
-                dvc.serviceWeather = self.serviceWeather; //Set serviceWeather
-                
-                WeatherTableCell *selectedWeatherCell = (WeatherTableCell *)[_twFavorites cellForRowAtIndexPath:_selectedRow];
-                //Update the selected forecast in session
-                //[ApplicationSession setSelectedForecast:selectedWeatherCell.forecast];
-                dvc.forecast = selectedWeatherCell.forecast;
-            }
-        }
-        
-        else if([segue.identifier isEqualToString:@"singleNavDetail"])
-        {
-            /*if([segue.destinationViewController isKindOfClass:[SingleDetailsViewController class]])
-            {
-                SingleDetailsViewController *sdvc = (SingleDetailsViewController *) segue.destinationViewController;
-                sdvc.serviceWeather = self.serviceWeather; //Set serviceWeather
-                
-                WeatherTableCell *selectedWeatherCell = (WeatherTableCell *)[_twFavorites cellForRowAtIndexPath:_selectedRow];
-                //Update the selected forecast in session
-                //[ApplicationSession setSelectedForecast:selectedWeatherCell.forecast];
-                sdvc.forecast = selectedWeatherCell.forecast;
-                
-                [sdvc populateTodayHoursWeather];
-            }*/
-            
             if([segue.destinationViewController isKindOfClass:[DetailScrollViewController class]])
             {
                 DetailScrollViewController *sdvc = (DetailScrollViewController *) segue.destinationViewController;
