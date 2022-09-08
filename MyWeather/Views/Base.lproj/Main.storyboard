@@ -137,6 +137,7 @@
                     <tabBarItem key="tabBarItem" title="Map" image="map" catalog="system" id="Jdq-h2-a1f"/>
                     <connections>
                         <outlet property="mkMapView" destination="Oku-uq-mdh" id="FoZ-7s-8nk"/>
+                        <segue destination="FBi-9g-pzb" kind="show" identifier="navAddFav" id="Mvj-NS-7Q8"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Sb1-Tl-mqK" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -454,6 +455,9 @@
             <point key="canvasLocation" x="3985.507246376812" y="1044.6428571428571"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="Mvj-NS-7Q8"/>
+    </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.46761089560000002" green="0.91748040909999995" blue="0.86313265559999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
     <resources>
         <image name="arrow.triangle.2.circlepath" catalog="system" width="128" height="101"/>

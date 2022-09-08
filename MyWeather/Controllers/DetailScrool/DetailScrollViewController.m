@@ -123,7 +123,7 @@
     
     //sunrise
     NSString *sunrisetFormatted = [NSString stringWithFormat:@"Sunrise🌞: %@", current.sunriseToString];
-    UILabel *lbSunrise = [[UILabel alloc]initWithFrame:CGRectMake(_swScroll.contentOffset.x, (i * 50), displayWidth, 40)];
+    UILabel *lbSunrise = [[UILabel alloc]initWithFrame:CGRectMake(10, (i * 50), displayWidth, 40)];
     [lbSunrise setTextColor:[UIColor blackColor]];
     [lbSunrise setText: sunrisetFormatted];
     [_swScroll addSubview:lbSunrise];
