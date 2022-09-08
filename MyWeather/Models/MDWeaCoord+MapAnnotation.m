@@ -21,7 +21,7 @@
 /**Get the title --> wwather image*/
 - (NSString *)title
 {
-    return [NSString stringWithFormat:@"%@", self.weatherImage];;
+    return [NSString stringWithFormat:@"%@ %@", self.forecast.coordinate.city, self.weatherImage];;
 }
 
 /**Get the title --> wwather image*/
