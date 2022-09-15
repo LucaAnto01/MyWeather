@@ -198,13 +198,18 @@
         if (!annotationView)
         {
             annotationView = [[MKPinAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier: PinReuseIdentifier];
-            annotationView.canShowCallout = YES;
+            annotationView.canShowCallout = YES; //YES to see "My location" annotation
         }
         
         annotationView.annotation = annotation;
+        
+        
         annotationView.rightCalloutAccessoryView = [UIButton buttonWithType:UIButtonTypeInfoDark];
         
-        return annotationView;
+        if(![annotation.title  isEqual: @"My Location"])
+            return annotationView;
+        
+        return nil;
     }
     
     @catch (NSException *exception)
@@ -219,6 +224,7 @@
 {
     if([control isEqual:view.rightCalloutAccessoryView])
         [self performSegueWithIdentifier:@"navAddFav" sender:view];
+    
 }
 
 /**Segue method*/
