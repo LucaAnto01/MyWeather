@@ -9,7 +9,8 @@
 
 @interface AddFavoritesViewController ()
 
-@property (weak, nonatomic) IBOutlet UITextField *tfNewFavorite;
+@property (strong, nonatomic) IBOutlet UITextField *tfNewFavorite;
+@property (strong, nonatomic) IBOutlet UIView *vAddFav;
 
 @end
 
@@ -18,6 +19,12 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    _tfNewFavorite.delegate = self;
+    
+    //For managing the resize of the view when keyboard will appair
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillShow:) name:UIKeyboardDidShowNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillBeHidden:) name:UIKeyboardWillHideNotification object:nil];
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -75,11 +82,54 @@
     }
 }
 
+/**Resize the view when keyboard appair**/
+- (void)keyboardWillShow:(NSNotification*)aNotification
+{
+    [UIView animateWithDuration:0.25 animations:^
+     {
+         CGRect newFrame = [self.vAddFav frame];
+         newFrame.origin.y -= 85; // tweak here to adjust the moving position
+         [self.vAddFav setFrame:newFrame];
+
+     }completion:^(BOOL finished)
+     {
+
+     }];
+}
+
+/**Resize the view when keyboard is close**/
+- (void)keyboardWillBeHidden:(NSNotification*)aNotification
+{
+    [UIView animateWithDuration:0.25 animations:^
+     {
+         CGRect newFrame = [self.vAddFav frame];
+         newFrame.origin.y += 85; // tweak here to adjust the moving position
+         [self.vAddFav setFrame:newFrame];
+
+     }completion:^(BOOL finished)
+     {
+
+     }];
+    }
+
+/**When tap around the screen**/
+- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    [self.view endEditing:YES];
+}
+
 /**Start editing*/
 - (IBAction)startEditing:(id)sender
 {
     self.tfNewFavorite.text = @"";
     self.tfNewFavorite.textColor = [UIColor blackColor]; //Set color to black
+}
+
+/**Click return --> close keyboard**/
+-(BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+    [textField resignFirstResponder];
+    return YES;
 }
 
 #pragma mark - Show error
