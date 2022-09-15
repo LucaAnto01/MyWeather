@@ -18,6 +18,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    _tfNewFavorite.delegate = self;
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -80,6 +82,13 @@
 {
     self.tfNewFavorite.text = @"";
     self.tfNewFavorite.textColor = [UIColor blackColor]; //Set color to black
+}
+
+/**Click return --> close keyboard**/
+-(BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+    [textField resignFirstResponder];
+    return YES;
 }
 
 #pragma mark - Show error
