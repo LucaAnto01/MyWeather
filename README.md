@@ -60,7 +60,7 @@
   <li>Map</li>
   <ul>
     <li>Forecasts for the current location and the preferred location are displayed here</li>
-    <li>Forecasts for the current location and the preferred location are displayed here</li>
+    <li>Automatic focus on current position🔎</li>
     <li>Click on the pin 📍 to see the current weather and on the ℹ️ for more information about the forecast</li>
   </ul>
   
