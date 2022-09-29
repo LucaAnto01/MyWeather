@@ -71,8 +71,7 @@
 <h3>🤳🏼Application usage</h3>
 
 <div><p>When application start, the necessary permissions will be requested.Having access to the location will make it possible to view the weather for the current location.<br>
-Information is stored via appropriately formatted and managed NSUserDefaults (See AddFavoritesViewController & FavoritesViewController).<br>
-Reference Branch --> Main.</p></div>
+Information is stored via appropriately formatted and managed NSUserDefaults (See AddFavoritesViewController & FavoritesViewController).</p></div>
 
 ---
 
